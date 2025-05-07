@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Tính Lương</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./LB/WOW.JS/css/libs/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="">
+    <!-- Tiêu Đề -->
+    <div class="bg-gray-800 py-3">
+        <h1 class="text-gradient2 text-3xl font-bold text-center uppercase">
+            Tính Lương Nhanh
+        </h1>
+    </div>
+    
+    <!-- Nội dung -->
+    <div class="flex items-center justify-center bg-white dark:bg-gray-900 p-4">
+        <form>
+            <div class="grid gap-6 mb-6 md:grid-cols-1">
+
+                <div class="mb-3">
+
+                    <div class="flex flex-col gap-6">
+                        <!-- Triển Khai -->
+                        <div class="relative">
+                            <input type="number" id="HT_TK"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " />
+                            <label for="floating_outlined"
+                                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Hoàn
+                                Tất Triển Khai</label>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="HT_Swap"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " />
+                            <label for="floating_outlined"
+                                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Hoàn
+                                Tất Swap</label>
+                        </div>
+                        <!-- AU -->
+                        <div class="relative">
+                            <input type="number" id="AU"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " />
+                            <label for="floating_outlined"
+                                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Active
+                                Sỡ Hữu</label>
+                        </div>
+                        <!-- Hệ Số bảo Trì -->
+                        <div class="relative">
+                            <form class="max-w-sm mx-auto">
+                                <select 
+                                type ="number"
+                                id="He_So"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Chọn Hệ Số </option>
+                                    <option value="1">1.0</option>
+                                    <option value="0.9">0.9</option>
+                                </select>
+                            </form>
+                        </div>
+                        <!-- Bậc Nghề -->
+                        <div class="relative">
+                            <form class="max-w-sm mx-auto">
+                                <select type ="number" 
+                                id="Bac_Nghe"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Chọn Bậc Nghề</option>
+                                    <option value="0">Bậc 1</option>
+                                    <option value="500000">Bậc 2</option>
+                                    <option value="1000000">Bậc 3</option>
+                                    <option value="1500000">Bậc 4</option>
+                                    <option value="2000000">Bậc 5</option>
+                                    <option value="2500000">Bậc 6</option>
+                                    <option value="3000000">Bậc 7</option>
+
+
+
+                                </select>
+                            </form>
+                        </div>
+                        <!-- Check KPI -->
+                        <div class="flex justify-around">
+                            <div
+                                class="flex items-center px-2 py-0 border border-gray-200 rounded-sm dark:border-gray-700">
+                                <input id="check_1" type="checkbox" value="1000000" name="bordered-checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="bordered-checkbox-1"
+                                    class="w-full py-2 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Đạt
+                                    KPIs</label>
+                            </div>
+                            <div
+                                class="flex items-center px-2 py-0 border border-gray-200 rounded-sm dark:border-gray-700">
+                                <input checked id="check_2" type="checkbox" value="800000"
+                                    name="bordered-checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="bordered-checkbox-2"
+                                    class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Đủ 2
+                                    KPDV</label>
+                            </div>
+                        </div>
+                        <!-- Nút Nhấn -->
+                        <button type="submit" id="BTN__Salary"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                          <p id="noti" class="mt-4 text-center text-1xl font-bold text-green-600 bg-green-100 p-4 rounded-md shadow-md"></p>  
+                    </div>
+                </div>
+        </form>
+        <!--  -->
+        <div>
+            <h3 class="text-[red]">* Lưu Ý:</h3>
+            <ul class="max-w-md space-y-1list-inside dark:text-gray-400">
+                <li class="flex items-center">
+                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                    </svg>
+                    Trung Bình 1 Ca Triển Khai 100.000 VND
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                    </svg>
+                    Hệ số liên hệ đội trưởng
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="./main.js"></script>
+    <script src="./LB/WOW.JS/dist/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>

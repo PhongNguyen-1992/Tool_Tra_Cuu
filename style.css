@@ -3,3 +3,10 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.text-gradient2 {
+    background: linear-gradient(to right, #facc15, #f97316, #dc2626); /* vàng → cam → đỏ */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
