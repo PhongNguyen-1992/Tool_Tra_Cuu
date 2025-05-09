@@ -10,3 +10,7 @@
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
+.container {
+    width: 80%;
+    margin: 0px auto;
+}
