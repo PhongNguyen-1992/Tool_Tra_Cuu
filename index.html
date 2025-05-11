@@ -106,7 +106,7 @@
 
 
     <!-- KPDV -->
-    <div id="accordion-collapse" data-accordion="collapse" class="wow animate__backInLeft mt-10 container mb-10">
+    <div id="accordion-collapse" data-accordion="collapse" class="wow animate__backInLeft mt-10 container">
         <h2 id="accordion-collapse-heading-1">
             <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500
                    rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 
@@ -237,27 +237,64 @@
         </div>
     </div>
 
-    <!-- SPDV -->
-    <section class="container">
-        <div class="wifi6 mt-10">
-            <div class="headder__spdv">
-                <h1
-                    class="text-5xl font-extrabold text-center bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
-                    Thiết Bị Đầu Cuối</h1>
+    <!-- SPDV  -->
+    <!-- Tabs -->
+    <section class="container mt-20">
+        <div class="head__spdv text-white text-center">
+            <h1 class="text-3xl text-center text-[#1cbbb4]">FPT Telecom Kết nối thông minh, trải nghiệm vượt trội</h1>
+            <span class="">FPT Telecom tiên phong ứng dụng Wi-Fi 6, mang đến mạng không dây siêu nhanh, ổn định và kết
+                nối đồng thời nhiều thiết bị mà không lo gián đoạn. <br>
+                Cùng với đó, FPT Play Box biến TV thường thành Smart TV, hỗ trợ điều khiển giọng nói, truy cập hàng trăm
+                kênh truyền hình và kho nội dung giải trí đa dạng.</span>
 
+        </div>
+        <div class="body__spdv">
+            <div class="mb-4 border-gray-200 dark:border-gray-700">
+                <ul class="flex justify-center -mb-px text-sm font-medium text-center" id="default-styled-tab"
+                    data-tabs-toggle="#default-styled-tab-content"
+                    data-tabs-active-classes="text-orange-400 bg-white/5 border-orange-500 dark:text-orange-400 dark:bg-white/5 dark:border-orange-400 font-semibold"
+                    data-tabs-inactive-classes="text-gray-400 hover:text-gray-300 hover:bg-white/5 border-transparent"
+                    role="tablist">
+
+                    <li class="me-2 w-1/2 sm:w-auto flex justify-center mb-2 sm:mb-0" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-200"
+                            id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab"
+                            aria-controls="profile" aria-selected="false">Router</button>
+                    </li>
+
+                    <li class="me-2 w-1/2 sm:w-auto flex justify-center mb-2 sm:mb-0" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-200"
+                            id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab"
+                            aria-controls="dashboard" aria-selected="false">AccessPoint</button>
+                    </li>
+
+                    <li class="me-2 w-1/2 sm:w-auto flex justify-center mb-2 sm:mb-0" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-200"
+                            id="settings-styled-tab" data-tabs-target="#styled-settings" type="button" role="tab"
+                            aria-controls="settings" aria-selected="true">FPT Play Box</button>
+                    </li>
+
+                    <li role="presentation" class="w-1/2 sm:w-auto flex justify-center mb-2 sm:mb-0">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-200"
+                            id="contacts-styled-tab" data-tabs-target="#styled-contacts" type="button" role="tab"
+                            aria-controls="contacts" aria-selected="false">Khác</button>
+                    </li>
+                </ul>
             </div>
-            <ul>
-                <li
-                    class="text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
-                    Thiết Bị Router</li>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Nôi Dụng Tabs -->
+            <div id="default-styled-tab-content">
+                <!-- Router -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-lg  dark:bg-gray-800"
+                    id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">
                     <!-- AX3000HI V2 -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX3000HI.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000HI.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000HI.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
@@ -279,7 +316,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Chỉ Làm Router. Không Thể Làm AccessPoint
+                                    Chỉ Làm Router.
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -319,16 +356,232 @@
                                 </li>
 
                             </ul>
-
-
                         </div>
                     </div>
-                    <!-- AX3000C V2 -->
+                    <!-- AX1800GZ  -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX3000Cv2.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX1800GZ.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX1800GZ.png" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        AX1800GZ</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        1.110.000VND/ SWAP 220.000VND</h2>
+                                </a>
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chỉ Làm Router.
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tải 32 Thiết Bị 2 Băng Tần
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    4 Cổng LAN 10/100/1000Mbps
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chuẩn wifi: b/g/a/ac/ax
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Mesh
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>            
+                     <!-- AX3000GZ -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000HI.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000GZ.png" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        AX3000GZ</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        1.110.000VND/ Hết Hàng</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chỉ Làm Router.
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tải 32 Thiết Bị 2 Băng Tần
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    4 Cổng LAN 10/100/1000Mbps
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chuẩn wifi: b/g/a/ac/ax
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Mesh
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- AX3000GZ -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000HI.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000GZv2.png" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        AX3000GZ V2</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        1.110.000VND/ Hết Hàng</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chỉ Làm Router.
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tải 32 Thiết Bị 2 Băng Tần
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    4 Cổng LAN 10/100/1000Mbps
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chuẩn wifi: b/g/a/ac/ax
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Mesh
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                            <!-- AX3000C V2 -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000Cv2.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000Cv2.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
@@ -395,9 +648,12 @@
                     <!-- AX3000C -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX3000C.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000C.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000C.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
@@ -461,21 +717,28 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- AX1800C  -->
+                </div>
+                <!-- Aceespoint -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-lg  dark:bg-gray-800"
+                    id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <!-- AX8000C -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX1800GZ.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/AX8000C.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX8000C.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
                                     <h5
                                         class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-                                        AX1800GZ</h5>
+                                        AX8000C</h5>
                                     <h2
                                         class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                        Hết Hàng NEW</h2>
+                                        2.800.000 VND</h2>
                                 </a>
 
                             </div>
@@ -488,7 +751,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Chỉ Làm Router. Không Thể Làm AccessPoint
+                                    Chỉ Làm AccessPoint, <span class="text-red-500">Có App Cài Đặt</span>
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -497,7 +760,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Tải 32 Thiết Bị 2 Băng Tần
+                                    Tải 96 Thiết Bị 3 Băng Tần
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -506,7 +769,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    4 Cổng LAN 10/100/1000Mbps
+                                    1 LAN/WAN &&nbsp<p class="font-medium text-red-500">3</p>&nbspCổng LAN 1000Mbps
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -524,27 +787,166 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    <p class="text-red-500">Chỉ Mesh Được Với AX1800AZ/AX3000AZ</p>
+                                    Có Hỗ Trợ Mesh
                                 </li>
 
                             </ul>
-
-
                         </div>
                     </div>
-
-                </div>
-
-                <li
-                    class="mt-5 text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
-                    Thiết Bị AcessPoint</li>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- AX1800GZ -->
+                    <!-- AX3000C -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX1800AZ.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000C.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000C.png" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        AX3000C</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        660.000VND</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Thể Chạy Router/AccessPoint
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tải 32 Thiết Bị 2 Băng Tần
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    1 LAN/WAN &&nbsp<p class="font-medium text-red-500">1</p>&nbspCổng LAN 1000Mbps
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chuẩn wifi: b/g/a/ac/ax
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Mesh
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- AX3000CV2 -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000CV2.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000Cv2.png" alt="Router" />
+                            </a>   
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        AX3000C V2</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        880.000VND/ Kèm Swap
+                                        660.000VND</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Thể Chạy Router/AccessPoint
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tải 32 Thiết Bị 2 Băng Tần
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    1 LAN/WAN &&nbsp<p class="font-medium text-red-500">3</p>&nbspCổng LAN 1000Mbps
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chuẩn wifi: b/g/a/ac/ax
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Mesh
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- AX1800AZ -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX1800AZ.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX1800AZ.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
@@ -611,9 +1013,12 @@
                     <!-- AX3000AZ -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX3000AZ.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault(); openModal('./IMG/AX3000AZ.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/AX3000AZ.png" alt="Router" />
+                            </a>      
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
@@ -622,7 +1027,7 @@
                                         AX3000AZ</h5>
                                     <h2
                                         class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                        860.000 VND/ Hết Hàng</h2>
+                                        1.300.000 VND / Hết Hàng</h2>
                                 </a>
 
                             </div>
@@ -653,7 +1058,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    1WAN/2LAN 10/100/1000Mbps
+                                    1WAN/2LAN tốc độ 10/100/1000Mbps
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -677,21 +1082,24 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- AX3000C -->
+                    <!-- Unifi AClite -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX3000C.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/Unifi AC Lite.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/Unifi AC Lite.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
                                     <h5
                                         class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-                                        AX3000C</h5>
+                                        UniFi AC Lite</h5>
                                     <h2
                                         class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                        660.000VND</h2>
+                                        2.380.000 VND</h2>
                                 </a>
 
                             </div>
@@ -704,7 +1112,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Có Thể Chạy Router/AccessPoint
+                                    Chỉ Làm AccessPoint, <span class="text-red-500">Có App Cài Đặt</span>
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -713,7 +1121,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Tải 32 Thiết Bị 2 Băng Tần
+                                    Tải 40 Thiết Bị 2 Băng Tần
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -722,7 +1130,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    1 LAN/WAN &&nbsp<p class="font-medium text-red-500">1</p>&nbspCổng LAN 1000Mbps
+                                    1 LAN hỗ trợ POE 1000Mbps
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -746,21 +1154,24 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- AX3000C V2 -->
+                    <!-- Unifi AC PRO -->
                     <div
                         class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="./IMG/AX3000Cv2.png" alt="" />
-                        </a>
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/Unifi AC Pro.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/Unifi AC Pro.png" alt="Router" />
+                            </a>
+                        </div>
                         <div class="p-5">
                             <div class="">
                                 <a href="#">
                                     <h5
                                         class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-                                        AX3000C V2</h5>
+                                        UniFi AC PRO</h5>
                                     <h2
                                         class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                        880.000VND/ Kèm Swap 660.000VND</h2>
+                                        4.070.000 VND</h2>
                                 </a>
 
                             </div>
@@ -773,7 +1184,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Có Thể Chạy Router/AccessPoint
+                                    Chỉ Làm AccessPoint, <span class="text-red-500">Có App Cài Đặt</span>
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -782,7 +1193,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Tải 32 Thiết Bị 2 Băng Tần
+                                    Tải 80 Thiết Bị 2 Băng Tần
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -791,7 +1202,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    <p class="font-medium text-red-500">1</p>&nbspLAN/WAN & 3 Cổng LAN 1000Mbps
+                                    1 LAN hỗ trợ POE 1000Mbps
                                 </li>
                                 <li class="flex items-center">
                                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
@@ -815,9 +1226,375 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- Unifi Aruba ON11 -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/IMG/Aruba Instant On AP11.png')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/Aruba Instant On AP11.png" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        UniFi AC PRO</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        2.380.000 VND</h2>
+                                </a>
 
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chỉ Làm AccessPoint, <span class="text-red-500">Có App Cài Đặt</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tải 40 Thiết Bị 2 Băng Tần
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    1 LAN hỗ trợ POE 1000Mbps
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Chuẩn wifi: b/g/a/ac/ax
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Mesh
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </ul>
+                <!-- FPT Play -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-lg  dark:bg-gray-800" id="styled-settings" role="tabpanel"
+                    aria-labelledby="settings-tab">
+                   <!-- FPT PLay T650 -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/IMG/Aruba Instant On AP11.png')">
+                                <img class="rounded-t-lg cursor-pointer h-73 w-full duration-300 hover:scale-105"
+                                    src="./IMG/fpt-play-box-601-anh-4.jpg" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        FPT Play T650</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        890.000 VND/ Swap 110.000 VND</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Hỗ Trợ Voice Tiếng Việt
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Kết Nối Wifi/ Cáp LAN
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Hơn 100 kênh truyền hình trong/ngoài nước
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Kho Phim Lẻ/Bộ Đa Dạng
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Có Hỗ Trợ Xem Trên Điện Thoại
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Gói ZPlay Lite -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/1745303705_goi-zplay-lite.jpg')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/1745303705_goi-zplay-lite.jpg" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        Gói ZPlay Lite</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        33.000 VNĐ/Tháng</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Phim Bộ Mới/HOT Phát Song Song
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Kho Phim Đặc Sắc (trừ Galaxy Play)
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Đa Dạng Nội Dung Thiếu Nhi, Âm Nhạc, Anime
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg> <span class="text-red-500">
+                                    Xem Trên 2 Thiết Bị Đồng Thời</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    <span class="text-red-500">
+                                    Chỉ Hỗ Trợ Xem Nhóm Kênh Địa Phương/ Thiết Yếu/ Tổng Hợp </span>
+                                </li>
+                                <li>
+                                   <button type="button" onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Danh Sách Kênh                                    
+                                   </button> 
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Gói SMAX+ -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/1745303722_goi-smax-plus.jpg')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/1745303722_goi-smax-plus.jpg" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        Gói SMAX PLUS</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        66.000 VNĐ/Tháng</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Hơn 100 Kênh Truyền Hình Trong Nước Và Quốc Tế (Trừ K+) 
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Xem Các Giải Bóng Đá, Thể Thao, Võ Thuật Độc Quyền
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Đa Dạng Nội Dung Thiếu Nhi, Âm Nhạc, Anime
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg> <span class="text-red-500">
+                                    Xem Trên 3 Thiết Bị Đồng Thời</span>
+                                </li>
+                                <li>
+                                   <button type="button" onclick="event.preventDefault();openModal('./IMG/kenh_Smax.jpg')" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Danh Sách Kênh                                    
+                                   </button> 
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Gói SMAX+ K+ -->
+                    <div
+                        class="mt-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                        <div class="anh_dau">
+                            <a href="#" onclick="event.preventDefault();openModal('./IMG/1745303751_goi-smax-k-plus.jpg')">
+                                <img class="rounded-t-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    src="./IMG/1745303751_goi-smax-k-plus.jpg" alt="Router" />
+                            </a>
+                        </div>
+                        <div class="p-5">
+                            <div class="">
+                                <a href="#">
+                                    <h5
+                                        class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        COMBO SMAX K+</h5>
+                                    <h2
+                                        class="text-3xl text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        219.000 VNĐ/Tháng</h2>
+                                </a>
+
+                            </div>
+                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Thông Tin Cơ Bản</h2>
+                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Hơn 100 Kênh Truyền Hình Trong Nước Và Quốc Tế & Kênh K+ 
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Xem Ngoại Hạng Anh, NBA, PGA, MMA, Cùng Kho Phim Đa Dạng
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    <span class="text-red-500">Chỉ 1 Thiết Bị Xem Đồng Thời Nội Dung K+</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg> <span class="text-red-500">
+                                    Xem Trên 3 Thiết Bị Đồng Thời Gói SMAX</span>
+                                </li>
+                                <li>
+                                   <button type="button" onclick="event.preventDefault();openModal('./IMG/kenh_play.jpg')" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Danh Sách Kênh                                    
+                                   </button> 
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts" role="tabpanel"
+                    aria-labelledby="contacts-tab">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
+                            class="font-medium text-gray-800 dark:text-white">Contacts tab's associated
+                            content</strong>. Clicking another tab will toggle the visibility of this one for the next.
+                        The tab JavaScript swaps classes to control the content visibility and styling.</p>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
@@ -836,13 +1613,24 @@
     <br>
     <br>
     <br>
+    <!-- Modal -->
+    <div id="imgModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+        <!-- Nút đóng -->
+        <span onclick="closeModal()" class="absolute top-4 right-6 text-white text-3xl cursor-pointer">&times;</span>
+        <!-- Ảnh lớn -->
+        <img id="modalImage" class="max-w-full max-h-full rounded-lg shadow-2xl" src="" alt="Zoomed Image" />
+    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+
     <script src="./main.js"></script>
     <script src="./LB/WOW.JS/dist/wow.min.js"></script>
     <script>
         new WOW().init();
     </script>
+
 </body>
 
 </html>
