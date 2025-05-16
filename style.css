@@ -10,6 +10,13 @@
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
+.text-gradient3 {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
 .container {
     width: 80%;
     margin: 0px auto;
