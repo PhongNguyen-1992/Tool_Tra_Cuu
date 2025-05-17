@@ -51,3 +51,30 @@ document.getElementById("BTN__Salary").onclick = function(e) {
     // Reset src để tránh lỗi cũ còn giữ
     modalImg.src = "";
   }
+
+  function updateSubOptions() {
+    const mainSelect = document.getElementById('mainSelect');
+    const subSelect = document.getElementById('subSelect');
+    const selectedGroup = mainSelect.value;
+
+    // Xóa hết các option cũ
+    subSelect.innerHTML = '';
+
+    // Nếu có nhóm hợp lệ thì tạo option mới
+    if (subOptions[selectedGroup]) {
+      subOptions[selectedGroup].forEach(function (item) {
+        const opt = document.createElement('option');
+        opt.value = item;
+        opt.textContent = item;
+        subSelect.appendChild(opt);
+      });
+    } else {
+      // Nếu chưa chọn nhóm thì hiện option mặc định
+      const opt = document.createElement('option');
+      opt.textContent = '-- Chọn nhóm trước --';
+      subSelect.appendChild(opt);
+    }
+  }
+
+  // Gọi 1 lần để load mặc định
+  updateSubOptions();

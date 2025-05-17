@@ -17,6 +17,26 @@
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
+.text-gradient4 {  
+  font-weight: bold;
+  background: linear-gradient(to right, #00ff87, #60efff, #00ff87); /* lặp lại để tạo hiệu ứng mượt */
+  background-size: 200%; /* mở rộng để có thể di chuyển */
+  background-position: right center; /* bắt đầu từ phải */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: right center;
+  }
+  100% {
+    background-position: left center;
+  }
+}
 .container {
     width: 80%;
     margin: 0px auto;
