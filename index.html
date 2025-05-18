@@ -55,9 +55,55 @@
                             class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Thanh
                             Toán</a>
                     </li>
+                    <li>
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                            class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                            <div class="flex items-center gap-1 text-gray-800 hover:text-blue-600">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>Thư Viện</div>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar"
+                            class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 text-gray-700 dark:text-gray-200 w-48"
+                                aria-labelledby="dropdownLargeButton">
+                                <li>
+                                    <a href="https://docs.google.com/presentation/d/1zJ1UDHk2CtWPxrf02O9NLi_E2CUI2hgf/preview"
+                                        target="_blank"
+                                        class="block px-4 py-2 rounded-md text-gray-800 hover:bg-blue-500 hover:text-white transition-colors duration-300 dark:text-gray-200 dark:hover:bg-blue-600 dark:hover:text-white">
+                                        An Toàn Lao Động
+                                    </a>
+                                </li>
 
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 rounded-md text-gray-800 hover:bg-blue-500 hover:text-white transition-colors duration-300 dark:text-gray-200 dark:hover:bg-blue-600 dark:hover:text-white">
+                                        Chính Sách KPI
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition ease-in-out duration-200">Tư
+                                        Duy Kỹ Thuật Dịch Vụ</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition ease-in-out duration-200">Thi
+                                        Công Thẩm Mỹ Mức 1</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
                 </ul>
             </div>
+
+            </li>
+
+            </ul>
+        </div>
         </div>
     </nav>
     <!-- Caurousel -->
@@ -252,7 +298,7 @@
     </div>
     <!-- SPDV  -->
     <!-- Tabs -->
-    <section class="container mt-20">
+    <section class="container mt-20" id="SPDV">
         <!-- Tiêu Đề Tabs -->
         <div class="head__spdv text-white text-center">
             <h1 class="text-3xl text-center text-[#1cbbb4]">FPT Telecom Kết nối thông minh, trải nghiệm vượt trội</h1>
@@ -1923,178 +1969,237 @@
     <!-- Xử lý lỗi -->
 
     <section class="container m-10 fullscreen-section" id="toolXuLi">
-        <!-- Headder -->
+        <!-- Kiểm Tra Giai Đoạn 1 -->
         <div>
-            <p
-                class=" gradientMove text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 text-5xl font-extrabold text-transparent text-center">
-                Tool Xử Lý Lỗi</p>
-            <div class="ml-10">
-                <h2 class="flex justify-center m-2 text-lg font-semibold text-white dark:text-white">Để Tool Chạy Chính Xác Các Bạn Kiểm
-                    Tra Giúp Các Bước Bên Dưới:</h2>
+            <!-- Headder -->
+            <div class="headder_GD1">
+                <p
+                    class=" gradientMove text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 text-4xl font-extrabold text-transparent text-center">
+                    Tool Xử Lý Lỗi</p>
+                <div class="p-2 flex justify-center">
+                    <h2
+                        class="inline-block mx-auto px-6 py-2 text-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-xl">
+                        Kiểm Tra Giai Đoạn 1
+                    </h2>
 
-                <body class="bg-gray-900 text-white">
-
-                    <ul class="space-y-4 p-4">
-                        <li
-                            class="grid grid-cols-1 sm:flex w-full gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md">
-                            <div class="flex items-center gap-2 flex-1 min-w-0">
-                                <svg class="w-4 h-4 text-green-400 shrink-0" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                </svg>
-                                <span class="whitespace-normal text-white font-medium">Tín Hiệu Quang Tại Nhà Khách Hàng
-                                    ≥ -23.5dBM</span>
-                            </div>
-                            <div
-                                class="grid grid-cols-1 sm:flex items-center flex-wrap gap-2 justify-center sm:justify-end">
-                                <span class="text-sm text-gray-300">Hướng Dẫn:</span>
-                                <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
-                                    class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
-                                    Inside
-                                </button>
-                                <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
-                                    class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
-                                    MobiX
-                                </button>
-                            </div>
-                        </li>
-                        <li
-                            class="grid grid-cols-1 sm:flex w-full gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md">
-                            <div class="flex items-center gap-2 flex-1 min-w-0">
-                                <svg class="w-4 h-4 text-green-400 shrink-0" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                </svg>
-                                <span class="whitespace-normal text-white font-medium">Các Lần Kết Nối Trong
-                                    24H/48H</span>
-                            </div>
-                            <div
-                                class="grid grid-cols-1 sm:flex items-center flex-wrap gap-2 justify-center sm:justify-end">
-                                <span class="text-sm text-gray-300">Hướng Dẫn:</span>
-                                <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
-                                    class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
-                                    Inside
-                                </button>
-                                <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
-                                    class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
-                                    MobiX
-                                </button>
-                            </div>
-                        </li>
-                        <li
-                            class="grid grid-cols-1 sm:divide-x divide-gray-600 sm:flex w-full gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md">
-                            <!-- Phần bên trái -->
-                            <div class="pr-4 ">
-                                <!-- Nội dung -->
-                                <p class="text-white text-center ">
-
-                                <h2 class="mb-2 text-lg font-semibold text-gradient4 dark:text-white">Tín Hiệu Và Các Lần
-                                    Kết Nối OK</h2>
-                                <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
-                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path
-                                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                        </svg>
-                                        Tiến Hành Kiểm Tra Như Bên Dưới
-                                    </li>
-                                </ul>
-
-                                </p>
-                            </div>
-                            <!-- Phần Giữa -->
-                            <div class="pl-4 pr-4">
-                                <!-- Nội dung -->
-                                <h2 class="mb-2 text-lg font-semibold text-gradient4  dark:text-white">Tín Hiệu Quang NOK/ Các Lần Kết
-                                    Nối OK</h2>
-                                <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Kiểm Tra Suy Hao Tập Điểm Bằng ICDP
-                                    </li>
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Kiểm Tra Bắn Lại 2 FC Modem Và Tập Điểm
-                                    </li>
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Thay Thế FC NOK. Tiến Hành Thay Thiết Bị
-                                    </li>
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Thay Thế Thiết Bị NOK. Tiến Hành Kéo Mới Toàn Tuyến
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Phần bên phải -->
-                            <div class="pl-4">
-                                <!-- Nội dung -->
-                                <h2 class="mb-2 text-lg font-semibold text-gradient4  dark:text-white">Tín Hiệu Quang OK/ Các Lần Kết
-                                    Nối NOK</h2>
-                                <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Kiểm Tra Thay Nguồn Modem
-                                    </li>
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Kiểm Tra Firmware ONT (Firmware Đúng: 24.09.18.1)
-                                    </li>
-                                    <li class="flex items-center">
-                                        <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        Thay Thiết Bị Modem 
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-
+                </div>
             </div>
+            <h2 class="text-red-500 text-center">🔔 Lưu ý: Việc kiểm tra Giai Đoạn 2 là bắt buộc nhằm đảm bảo quá trình
+                bảo trì được thực hiện đầy đủ và chính xác.</h2>
+            <!-- Body -->
+
+            <body class="bg-gray-900 text-white">
+                <ul class="space-y-4 p-4">
+                    <li
+                        class="grid grid-cols-1 sm:flex w-full gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md">
+                        <div class="flex items-center gap-2 flex-1 min-w-0">
+                            <svg class="w-4 h-4 text-green-400 shrink-0" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                            </svg>
+                            <span class="whitespace-normal text-white font-medium">Tín Hiệu Quang Tại Nhà Khách Hàng
+                                ≥ -23.5dBM</span>
+                        </div>
+                        <div
+                            class="grid grid-cols-1 sm:flex items-center flex-wrap gap-2 justify-center sm:justify-end">
+                            <span class="text-sm text-gray-300">Hướng Dẫn:</span>
+                            <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
+                                class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
+                                Inside
+                            </button>
+                            <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
+                                class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
+                                MobiX
+                            </button>
+                        </div>
+                    </li>
+                    <li
+                        class="grid grid-cols-1 sm:flex w-full gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md">
+                        <div class="flex items-center gap-2 flex-1 min-w-0">
+                            <svg class="w-4 h-4 text-green-400 shrink-0" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                            </svg>
+                            <span class="whitespace-normal text-white font-medium">Các Lần Kết Nối Trong
+                                24H/48H</span>
+                        </div>
+                        <div
+                            class="grid grid-cols-1 sm:flex items-center flex-wrap gap-2 justify-center sm:justify-end">
+                            <span class="text-sm text-gray-300">Hướng Dẫn:</span>
+                            <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
+                                class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
+                                Inside
+                            </button>
+                            <button onclick="event.preventDefault();openModal('./IMG/kenh_zplay.jpg')"
+                                class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg text-sm px-4 py-1.5 transition-all">
+                                MobiX
+                            </button>
+                        </div>
+                    </li>
+                    <li
+                        class="grid grid-cols-1 sm:divide-x divide-gray-600 sm:flex sm:justify-center w-full gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md ">
+                        <!-- Phần bên trái -->
+                        <div class="pr-4 ">
+                            <!-- Nội dung -->
+                            <p class="text-white text-center ">
+
+                            <h2 class="mb-2 text-lg font-semibold text-center text-gradient4 dark:text-white">Tín Hiệu
+                                Và Các
+                                Lần
+                                Kết Nối OK</h2>
+                            <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    Tiến Hành Kiểm Tra Qua Giai Đoạn 2
+                                </li>
+
+                            </ul>
+                            </p>
+                        </div>
+                        <!-- Phần Giữa -->
+                        <div class="pl-4 pr-4">
+                            <!-- Nội dung -->
+                            <h2 class="mb-2 text-lg text-center font-semibold text-gradient4  dark:text-white">Tín Hiệu
+                                Quang
+                                NOK/ Các Lần Kết
+                                Nối OK</h2>
+                            <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
+                                <li class="flex items-center gap-2">
+                                    <div
+                                        class="w-3.5 h-3.5 bg-red-500 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-white">Kiểm Tra Suy Hao Tập Điểm Bằng ICDP</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <div
+                                        class="w-3.5 h-3.5 bg-red-500 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-white">Kiểm Tra Bắn Lại 2FC Modem, Tập Điểm</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <div
+                                        class="w-3.5 h-3.5 bg-red-500 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-white">Thay Thế Thiết Bị</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <div
+                                        class="w-3.5 h-3.5 bg-red-500 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-white">Kéo Mới Toàn Tuyến</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Phần bên phải -->
+                        <div class="pl-4">
+                            <!-- Nội dung -->
+                            <h2
+                                class="mb-2 text-lg text-center font-semibold text-gradient4  dark:text-white text-center">
+                                Tín Hiệu Quang
+                                OK/ Các Lần Kết
+                                Nối NOK</h2>
+                            <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
+                                <li class="flex items-center gap-2">
+                                    <div
+                                        class="w-3.5 h-3.5 bg-red-500 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-white">Kiểm Tra Thay Nguồn MoDem</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <div
+                                        class="w-3.5 h-3.5 bg-red-500 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-white">Kiểm Tra Firmware ONT (Firmware Đúng:
+                                        24.09.18.1)</span>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <svg class="w-3.5 h-3.5 me-2 text-white bg-red-500 rounded-full"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                    Thay Thiết Bị Modem
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </body>
         </div>
+        <!-- Kiểm Tra Giai Đoạn 2 -->
+        <!-- Headder -->
+        <div class="p-2 flex justify-center">
+            <h2
+                class="inline-block mx-auto px-6 py-2 text-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-xl">
+                Kiểm Tra Giai Đoạn 2
+            </h2>            
+        </div>
+        <h2 class="text-red-500 text-center">🔔 Lưu ý: Việc kiểm tra Giai Đoạn 1 là bắt buộc nhằm đảm bảo quá trình
+                bảo trì được thực hiện đầy đủ và chính xác.</h2>
+        <!-- Body -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 m-5">
+            <!-- Mạng Chậm/ Chập Chờn  -->
+            <button type="button" onclick="mangCham()" id="mangCham"
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Mạng
+                Chậm/ Chập Chờn</button>
+            <button type="button" onclick="ketNoi()" id="ketNoi"
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                Có Wifi Nhưng Không Kết Nối Được</button>
+            <button type="button" onclick="khongTenWifi()" id="ketNoi"
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                Modem Sáng Đèn Không Thấy Tên Wifi</button>
+            <button type="button" onclick="truyCap()" id="truyCap"
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Kết
+                Nối Được Wifi Không Vào Mạng Được</button>
+            <button type="button" id="truyCapWeb"
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
+                Truy Cập Được WEB/App Cụ Thể</button>
+        </div>
+        <p id="noti" class="text-white hidden border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md"></p>
+
     </section>
 
 
-
+    <a href=""></a>
 
 
 
@@ -2112,7 +2217,6 @@
 <select id="subSelect">
 Các option phụ sẽ được cập nhật 
 </select> -->
-
     <script>
         const subOptions = {
             net: [
