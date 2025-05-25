@@ -51,34 +51,6 @@ function closeModal() {
   // Reset src để tránh lỗi cũ còn giữ
   modalImg.src = "";
 }
-
-function updateSubOptions() {
-  const mainSelect = document.getElementById('mainSelect');
-  const subSelect = document.getElementById('subSelect');
-  const selectedGroup = mainSelect.value;
-
-  // Xóa hết các option cũ
-  subSelect.innerHTML = '';
-
-  // Nếu có nhóm hợp lệ thì tạo option mới
-  if (subOptions[selectedGroup]) {
-    subOptions[selectedGroup].forEach(function (item) {
-      const opt = document.createElement('option');
-      opt.value = item;
-      opt.textContent = item;
-      subSelect.appendChild(opt);
-    });
-  } else {
-    // Nếu chưa chọn nhóm thì hiện option mặc định
-    const opt = document.createElement('option');
-    opt.textContent = '-- Chọn nhóm trước --';
-    subSelect.appendChild(opt);
-  }
-}
-
-// Gọi 1 lần để load mặc định
-updateSubOptions();
-
 function mangCham() {
   const noti = document.getElementById("noti");
 
@@ -184,7 +156,7 @@ function truyCap() {
       - Hướng dẫn KHG truy cập HiFPT kiểm tra tên Wifi và xem điện thoại đã kết nối đúng chưa.<span style="color:red"><br> 🚨 Lưu ý: bỏ 2.4G và 5G trên HIFPT mới ra Tên Đúng</span> <button type="button" onclick="event.preventDefault();openModal('./IMG/HIFPTtenWF.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn</button> <br>
     <b style="color:	#FF9800"> Bước 2: </b> Tách hết local (Tháo dây LAN đang cắm vào modem). Hướng dẫn KHG vào HIFPT Reboot Modem/ Rút Chui Cắm Điện Modem  <button type="button" onclick="event.preventDefault();openModal('./IMG/HIFPTReboot.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn</button> <br>
       <span style="color:	#FF9800"> + Trường Hợp Hoạt Động Bình Thường: </span>KHG bị Loop mạng do AP/ PC-Laptop-Camera đang đặt IP Tĩnh Sai<br>
-      <span style="color:	#FF9800"> + Trường Hợp Vẫn Không Sử Dụng Được: </span>Kiểm tra lại xem thiết bị KHG có đặt IP tĩnh/ Modem đặt sai DNS. <span style="color:#81C784">✅ DNS Đúng 210.245.31.220/8.8.8.8 </span> <button type="button" onclick="event.preventDefault();openModal('./IMG/DNSZTE.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn ZTE</button> <button type="button" onclick="event.preventDefault();openModal('./IMG/DNSZTE.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn CIG</button> <button type="button" onclick="event.preventDefault();openModal('./IMG/DNSZTE.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn FoxCom/HI</button>  <br> 
+      <span style="color:	#FF9800"> + Trường Hợp Vẫn Không Sử Dụng Được: </span>Kiểm tra lại xem thiết bị KHG có đặt IP tĩnh/ Modem đặt sai DNS. <span style="color:#81C784">✅ DNS Đúng 210.245.31.220/8.8.8.8 </span> <button type="button" onclick="event.preventDefault();openModal('./IMG/DNSZTE.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn ZTE</button> <button type="button" onclick="event.preventDefault();openModal('./IMG/DNSZTE.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn CIG</button> <button type="button" onclick="event.preventDefault();openModal('./IMG/DNSFOXCOM.jpg')" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Hướng Dẫn FoxCom/HI</button>  <br> 
 
 
 
@@ -209,3 +181,5 @@ function truyCap() {
     noti.innerHTML = "";
   }
 }
+
+

@@ -9,13 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./LB/WOW.JS/css/libs/animate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body class="bg-[black]">
+<body class="bg-black ">
     <!-- NAV -->
-    <nav class=" sticky top-0 z-50 bg-neutral-900 text-blue-500 shadow-md text-blue-500  dark:bg-gray-900">
+    <nav class=" sticky top-0 z-50 bg-neutral-900 text-blue-500 shadow-md text-blue-500">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <a href=""><img src="https://fpt.vn/fontend_v2.0_2024/assets/images/fpt-logo.svg" alt=""
@@ -23,81 +24,84 @@
                 <span class="text-gradient2 text-4xl font-bold text-center uppercase">SÀI GÒN 1</span>
             </a>
             <button data-collapse-toggle="navbar-default" type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                class="flex-shrink-0 inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 md:hidden"
                 aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15" />
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <div class="hidden w-full md:block md:w-auto " id="navbar-default">
                 <ul
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    class="font-medium flex flex-col p-5 md:p-0 mt-4 border border-gray-700 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 text-gray-300">
                     <li>
                         <a href="./Salary.html"
-                            class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                            class="block py-5 px-4 rounded-sm bg-blue-700 text-white md:bg-transparent md:text-blue-500 md:p-0 dark:text-white md:dark:text-blue-400 transition-colors duration-300"
                             aria-current="page">Tính Lương</a>
                     </li>
                     <li>
                         <a href="#toolXuLi"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                            Xử Lý Lỗi
-                        </a>
+                            class="block py-5 px-4 rounded-sm text-gray-300 hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 dark:hover:bg-gray-700 dark:hover:text-white transition-colors duration-300">Xử
+                            Lý Lỗi</a>
                     </li>
                     <li>
                         <a href="https://management.mypt.vn/check-contract"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">PT-DOCTOR</a>
+                            class="block py-5 px-4 rounded-sm text-gray-300 hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 dark:hover:bg-gray-700 dark:hover:text-white transition-colors duration-300">PT-DOCTOR</a>
                     </li>
                     <li>
                         <a href="https://fpt.vn/pay/vi/auth"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Thanh
+                            class="block py-5 px-4 rounded-sm text-gray-300 hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 dark:hover:bg-gray-700 dark:hover:text-white transition-colors duration-300">Thanh
                             Toán</a>
                     </li>
-                    <li>
+                    <li class="relative">
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                            class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                            <div class="flex items-center gap-1 text-gray-800 hover:text-blue-600">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                            </svg>Thư Viện</div>
+                            class="flex items-center justify-between w-full py-5 px-4 rounded-sm text-gray-300 hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 md:w-auto dark:hover:bg-gray-700 dark:hover:text-white transition-colors duration-300"
+                            aria-expanded="false">
+                            <div class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span>Thư Viện</span>
+                            </div>
                         </button>
                         <!-- Dropdown menu -->
                         <div id="dropdownNavbar"
-                            class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
-                            <ul class="py-2 text-sm bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 text-gray-700 dark:text-gray-200 w-48"
-                                aria-labelledby="dropdownLargeButton">
+                            class="absolute left-0 z-20 hidden mt-1 w-48 rounded-lg bg-white shadow-lg divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600"
+                            role="menu" aria-labelledby="dropdownNavbarLink">
+                            <ul class="py-2 text-sm text-gray-800 dark:text-gray-200">
+                                <li>
+                                    <a href="./HDCAMERA.html"
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                                        role="menuitem">HDSD FPT Camera</a>
+                                </li>
                                 <li>
                                     <a href="https://docs.google.com/presentation/d/1zJ1UDHk2CtWPxrf02O9NLi_E2CUI2hgf/preview"
                                         target="_blank"
-                                        class="block px-4 py-2 rounded-md text-gray-800 hover:bg-blue-500 hover:text-white transition-colors duration-300 dark:text-gray-200 dark:hover:bg-blue-600 dark:hover:text-white">
-                                        An Toàn Lao Động
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 rounded-md text-gray-800 hover:bg-blue-500 hover:text-white transition-colors duration-300 dark:text-gray-200 dark:hover:bg-blue-600 dark:hover:text-white">
-                                        Chính Sách KPI
-                                    </a>
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                                        role="menuitem">An Toàn Lao Động</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition ease-in-out duration-200">Tư
-                                        Duy Kỹ Thuật Dịch Vụ</a>
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                                        role="menuitem">Chính Sách KPI</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition ease-in-out duration-200">Thi
-                                        Công Thẩm Mỹ Mức 1</a>
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                                        role="menuitem">Tư Duy Kỹ Thuật Dịch Vụ</a>
+                                </li>
+                                <li>
+                                    <a href="https://docs.google.com/presentation/d/1W8TpkKAxSL2mUwhbU3Sz9n_6tkO392JP/preview"
+                                        class="block px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                                        role="menuitem">Thi Công Thẩm Mỹ Mức 1</a>
                                 </li>
                             </ul>
                         </div>
-
                     </li>
                 </ul>
+
             </div>
 
             </li>
@@ -163,7 +167,7 @@
         </div>
     </section>
     <!-- KPDV -->
-    <div class="mt-10 mb-10">
+    <!-- <div class="mt-10 mb-10">
         <div id="accordion-collapse" data-accordion="collapse" class="wow animate__backInLeft container">
             <h2 id="accordion-collapse-heading-1">
                 <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500
@@ -295,7 +299,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- SPDV  -->
     <!-- Tabs -->
     <section class="container mt-20" id="SPDV">
@@ -483,7 +487,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Có Hỗ Trợ Mesh
+                                    <span class="text-red-500">Chỉ Hỗ Trợ MESH AX1800AZ/AX3000AZ</span>
                                 </li>
 
                             </ul>
@@ -555,7 +559,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Có Hỗ Trợ Mesh
+                                    <span class="text-red-500">Chỉ Hỗ Trợ MESH AX1800AZ/AX3000AZ</span>
                                 </li>
 
                             </ul>
@@ -627,7 +631,7 @@
                                         <path
                                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                     </svg>
-                                    Có Hỗ Trợ Mesh
+                                    <span class="text-red-500">Chỉ Hỗ Trợ MESH AX1800AZ/AX3000AZ</span>
                                 </li>
 
                             </ul>
@@ -1955,19 +1959,7 @@
         <!-- Ảnh lớn -->
         <img id="modalImage" class="max-w-full max-h-full rounded-lg shadow-2xl" src="" alt="Zoomed Image" />
     </div>
-
-
-    <!-- <div class="container" style="width: 100%; max-width: 1500px; margin: auto;">
-  <iframe 
-    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTqyddJFutn-lrSl_ATKm6XpD9hz8mWJNTQcBerc_uLIs2xmNKKzIUQJ127j0w8YDCFaYmj6sJcK4N_/pubhtml?gid=1139653519&amp;single=true&amp;widget=true&amp;headers=false" 
-    width="100%" 
-    height="600" 
-    style="border: none; overflow: auto;">
-  </iframe>
-</div> -->
-
     <!-- Xử lý lỗi -->
-
     <section class="container m-10 fullscreen-section" id="toolXuLi">
         <!-- Kiểm Tra Giai Đoạn 1 -->
         <div>
@@ -2167,76 +2159,102 @@
         </div>
         <!-- Kiểm Tra Giai Đoạn 2 -->
         <!-- Headder -->
-        <div class="p-2 flex justify-center">
-            <h2
-                class="inline-block mx-auto px-6 py-2 text-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-xl">
-                Kiểm Tra Giai Đoạn 2
-            </h2>            
+        <div>
+            <div class="p-2 flex justify-center">
+                <h2
+                    class="inline-block mx-auto px-6 py-2 text-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-xl">
+                    Kiểm Tra Giai Đoạn 2
+                </h2>
+            </div>
+            <h2 class="text-red-500 text-center">🔔 Lưu ý: Việc kiểm tra Giai Đoạn 1 là bắt buộc nhằm đảm bảo quá trình
+                bảo trì được thực hiện đầy đủ và chính xác.
+            </h2>
         </div>
-        <h2 class="text-red-500 text-center">🔔 Lưu ý: Việc kiểm tra Giai Đoạn 1 là bắt buộc nhằm đảm bảo quá trình
-                bảo trì được thực hiện đầy đủ và chính xác.</h2>
         <!-- Body -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 m-5">
-            <!-- Mạng Chậm/ Chập Chờn  -->
-            <button type="button" onclick="mangCham()" id="mangCham"
-                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Mạng
-                Chậm/ Chập Chờn</button>
-            <button type="button" onclick="ketNoi()" id="ketNoi"
-                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                Có Wifi Nhưng Không Kết Nối Được</button>
-            <button type="button" onclick="khongTenWifi()" id="ketNoi"
-                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                Modem Sáng Đèn Không Thấy Tên Wifi</button>
-            <button type="button" onclick="truyCap()" id="truyCap"
-                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Kết
-                Nối Được Wifi Không Vào Mạng Được</button>
-            <button type="button" id="truyCapWeb"
-                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
-                Truy Cập Được WEB/App Cụ Thể</button>
+        <div class="body__GD2 grid grid-cols-1 sm:grid-cols-2">
+            <div class="left__GD2 ">
+                <h1 class="text-white text-2xl ml-10 p-2">Lỗi Internet</h1>
+                <!-- Button Lỗi INTERNET  -->
+                <div class=" grid grid-cols-1 sm:grid-cols-2 w-auto h-fit gap-3">
+                    <button type="button" onclick="mangCham()" id="mangCham"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Mạng
+                        Chậm/ Chập Chờn</button>
+                    <button type="button" onclick="ketNoi()" id="ketNoi"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Có Wifi Nhưng Không Kết Nối Được</button>
+                    <button type="button" onclick="khongTenWifi()" id="ketNoi"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Modem Sáng Đèn Không Thấy Tên Wifi</button>
+                    <button type="button" onclick="truyCap()" id="truyCap"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Kết
+                        Nối Được Wifi Không Vào Mạng Được</button>
+                    <button type="button" id="truyCapWeb"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
+                        Truy Cập Được WEB/App Cụ Thể</button>
+                    <button type="button" id="truyCapWeb"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cấu
+                        Hình Gói Đa Phiên</button>
+                </div>
+                <h1 class="text-white text-2xl ml-10 p-2">Lỗi PAYTV/FPT PLAY</h1>
+                <!-- Button Lỗi PAYTV  -->
+                <div class=" grid grid-cols-1 sm:grid-cols-2 w-auto h-fit gap-3">
+                    <button type="button" onclick="" id="mangCham"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Tivi
+                        Báo Không Có Tín Hiệu</button>
+                    <button type="button" onclick="" id="ketNoi"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Tivi Báo Lỗi Kết Nối Internet</button>
+                    <button type="button" onclick="" id="ketNoi"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Truyền Hình Xem Màn Hình Đen/ Ứng Dụng Coi OK</button>
+                    <button type="button" onclick="" id="truyCap"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Youtube
+                        Xem Không Được</button>
+                    <button type="button" id="truyCapWeb"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
+                        Xem Được Kho Ứng Dụng</button>
+                    <button type="button" id="truyCapWeb"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Có
+                        Hình Không Có Tiếng</button>
+                </div>
+                <h1 class="text-white text-2xl ml-10 p-2">Lỗi FPT CAMERA</h1>
+                <!-- Button Lỗi Camera  -->
+                <div class=" grid grid-cols-1 sm:grid-cols-2 w-auto h-fit gap-3">
+                    <button type="button" onclick="" id="mangCham"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Hướng
+                        Dẫn Active Cloud Camera</button>
+                    <button type="button" onclick="" id="ketNoi"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Hướng Dẫn Replace MAC Camera</button>
+                    <button type="button" onclick="" id="ketNoi"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Hướng Dẫn Cấu Hình Camera Đầu Ghi</button>
+                    <button type="button" onclick="" id="truyCap"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
+                        Full Record/ Chuyển Động</button>
+                    <button type="button" id="truyCapWeb"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
+                        Thông Báo Chuyển Động</button>
+                    <button type="button" id="truyCapWeb"
+                        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Không
+                        Phát Tiếng</button>
+                </div>
+            </div>
+            <div class="right__GD2">
+                <div class="col-span-1 sm:col-span-2">
+                    <h1 class="text-base leading-relaxed text-gray-300 ml-10 p-2 ">Hướng Dẫn
+                    </h1>
+                    <p id="noti" class="text-white h-fit border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md">
+                    </p>
+                </div>
+            </div>
         </div>
-        <p id="noti" class="text-white hidden border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md"></p>
-
     </section>
-
-
-    <a href=""></a>
-
-
-
-    <!-- <label for="mainSelect">Chọn nhóm:</label>
-<select id="mainSelect" onchange="updateSubOptions()">
-  <option value="">-- Chọn nhóm --</option>
-  <option value="net">Net</option>
-  <option value="paytv">PayTV</option>
-  <option value="camera">Camera</option>
-</select>
-
-<br><br>
-
-<label for="subSelect">Chi tiết:</label>
-<select id="subSelect">
-Các option phụ sẽ được cập nhật 
-</select> -->
-    <script>
-        const subOptions = {
-            net: [
-                "Mạng chậm",
-                "Không truy cập được",
-                "Tín hiệu không có"
-            ],
-            paytv: [
-                "Tivi coi không được",
-                "Không load portal",
-                "Không có tiếng"
-            ],
-            camera: [
-                "Cần đăng nhập app",
-                "Xóa tài khoản"
-            ]
-        };
-
-    </script>
-
+    <!-- Ontotop -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"
+        class="hidden fixed bottom-6 right-6 z-50 bg-gray-400 text-white text-xl p-3 rounded-md shadow hover:bg-gray-500 transition duration-300">
+        <i class="fas fa-chevron-up"></i>
+    </button>
     <br>
     <br>
     <br>
@@ -2262,6 +2280,25 @@ Các option phụ sẽ được cập nhật
     <script src="./LB/WOW.JS/dist/wow.min.js"></script>
     <script>
         new WOW().init();
+    </script>
+    <!-- Ontotop -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            };
+
+            window.topFunction = function () {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            };
+        });
     </script>
 
 </body>

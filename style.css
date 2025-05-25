@@ -1,27 +1,34 @@
-.text-gradient{
-    background: linear-gradient(to right, #FDF6B2, red);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.text-gradient {
+  background: linear-gradient(to right, #FDF6B2, red);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .text-gradient2 {
-    background: linear-gradient(to right, #facc15, #f97316, #dc2626); /* vàng → cam → đỏ */
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(to right, #facc15, #f97316, #dc2626);
+  /* vàng → cam → đỏ */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
+
 .text-gradient3 {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
-.text-gradient4 {  
+
+.text-gradient4 {
   font-weight: bold;
-  background: linear-gradient(to right, #00ff87, #60efff, #00ff87); /* lặp lại để tạo hiệu ứng mượt */
-  background-size: 200%; /* mở rộng để có thể di chuyển */
-  background-position: right center; /* bắt đầu từ phải */
+  background: linear-gradient(to right, #00ff87, #60efff, #00ff87);
+  /* lặp lại để tạo hiệu ứng mượt */
+  background-size: 200%;
+  /* mở rộng để có thể di chuyển */
+  background-position: right center;
+  /* bắt đầu từ phải */
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -33,11 +40,13 @@
   0% {
     background-position: right center;
   }
+
   100% {
     background-position: left center;
   }
 }
+
 .container {
-    width: 80%;
-    margin: 0px auto;
+  width: 80%;
+  margin: 0px auto;
 }
