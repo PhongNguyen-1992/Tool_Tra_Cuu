@@ -5,7 +5,7 @@ const getEls = (id) => document.getElementById(id);
 const getValue = () => {
   const id = getEls("idNhanVien").value; // Lấy giá trị id từ input
   // Lấy các giá trị từ form
-  const MSNV = getEls("maNhanVien").value;  
+  const MSNV = getEls("maNhanVien").value;
   const HoVaTen = getEls("TenNV").value;
   const HDLD = getEls("HDLD").value;
   const phongBan = getEls("PhongBan").value;
@@ -70,6 +70,15 @@ const cbqlMap = {
   "LVH": "Lê Văn Huyền",
 };
 const renderHR = (data) => {
+  const capitalizeWords = (str) => {
+    return str
+      .toLowerCase()
+      .trim()
+      .split(' ')
+      .filter(word => word)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
   let contentHTML = "";
   for (let i = 0; i < data.length; i++) {
     const hr = data[i];
@@ -77,11 +86,11 @@ const renderHR = (data) => {
       <tr>
         <td>${i + 1}</td>
         <td>${hr.MSNV}</td>
-        <td>${hr.HoVaTen}</td>
+        <td>${capitalizeWords(hr.HoVaTen)}</td>
         <td>${hdldMAP[hr.HDLD] || hr.HDLD}</td>
         <td>${phongBanMap[hr.PhongBan] || hr.PhongBan}</td> 
         <td>${hr.SDT}</td>
-        <td>${hr.MBX}</td>
+        <td>${hr.MBX.toUpperCase()}</td>
         <td>${hr.Mail}</td>
         <td>${hr.ThamNien}</td>
         <td>${hr.Block}</td>
@@ -213,7 +222,7 @@ const onExportExcel = () => {
 
     // Tạo mảng dữ liệu
     const worksheetData = [
-      ['STT', 'MSNV','Họ Và Tên', 'Hợp Đồng Lao Động', 'Phòng Ban', 'Số Điện Thoại', 'AccountMBX', 'Mail', 'Thâm Niên', 'Block', 'CBQL'],
+      ['STT', 'MSNV', 'Họ Và Tên', 'Hợp Đồng Lao Động', 'Phòng Ban', 'Số Điện Thoại', 'AccountMBX', 'Mail', 'Thâm Niên', 'Block', 'CBQL'],
     ];
     data.forEach((hr, index) => {
       worksheetData.push([
@@ -221,7 +230,7 @@ const onExportExcel = () => {
         hr.MSNV,
         hr.HoVaTen,
         hr.HDLD in hdldMAP ? hdldMAP[hr.HDLD] : hr.HDLD,
-        hr.PhongBan in phongBanMap ? phongBanMap[hr.PhongBan] : hr.PhongBan,        
+        hr.PhongBan in phongBanMap ? phongBanMap[hr.PhongBan] : hr.PhongBan,
         hr.SDT,
         hr.MBX,
         hr.Mail,
