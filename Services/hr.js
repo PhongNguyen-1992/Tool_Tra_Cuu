@@ -16,10 +16,10 @@ class HRService {
         return promise
     }
 
-    //Edit HR
-    editHRAPI(MSNV, nhanVien) {
+    //Edit HR giá trị
+    editHRAPI(id, nhanVien) {
         const promise = axios({
-            url: `https://683dacda199a0039e9e66ead.mockapi.io/api/HRSG01/${MSNV}`,
+            url: `https://683dacda199a0039e9e66ead.mockapi.io/api/HRSG01/${id}`,
             method: "PUT",
             data: nhanVien,
         });
@@ -35,6 +35,17 @@ class HRService {
         });
         return promise
     }
+    // Tìm kiếm nhân viên theo tên
+   searchHRByName(name) {
+    return axios.get("https://683dacda199a0039e9e66ead.mockapi.io/api/HRSG01")
+        .then(res => {
+            const filtered = res.data.filter(item =>
+                item.name.toLowerCase().includes(name.toLowerCase())
+            );
+            return { data: filtered };
+        });
+}
+
 
 }
 export default HRService

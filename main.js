@@ -25,28 +25,13 @@ getEls("btnThemSP").onclick = function () {
   getEls("btnUpdate").style.display = "none";
   getEls("modalHeader").innerHTML = "Thêm Nhân Viên";
   getEls("idNhanVienContainer").style.display = "none"; // Ẩn input id
+  getEls("btnAdd").style.display = "block"; // Hiện nút Thêm
   // // Reset form
   // getEls("formHR").reset();
 }
 
 
-// Thêm nhân viên
-getEls("btnAdd").onclick = function () {
-  // Tạo đối tượng nhân viên
-  const nhanVienMoi = getValue();
-  // Gọi API thêm nhân viên
-  hrService.addHRAPI(nhanVienMoi)
-    .then(() => {
-      Swal.fire('Thành công!', 'Nhân viên đã được thêm.', 'success');
-      getListHR();
-      // Đóng modal
-      $('#myModal').modal('hide');
-    })
-    .catch((error) => {
-      console.error("Error adding HR:", error);
-      Swal.fire('Lỗi!', 'Thêm không thành công.', 'error');
-    });
-};
+
 
 const getListHR = () => {
   const promise = hrService.getListHRAPI();
@@ -58,44 +43,9 @@ const getListHR = () => {
       console.error("Error fetching HR data:", error);
     })
 };
-//Delete HR  dựa vào MSNV - Thông báo trước khi thực hiện xóa
-const deleteHR = (id, HoVaTen) => {
-  Swal.fire({
-    title: `Bạn có chắc muốn xóa ${HoVaTen}?`,
-    text: "Thao tác này không thể hoàn tác!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Xóa',
-    cancelButtonText: 'Hủy',
-  }).then((result) => {
-    if (result.isConfirmed) {
-      hrService.deleteHRAPI(id)
-        .then(() => {
-          Swal.fire('Đã xóa!', `Nhân viên ${HoVaTen} đã được xóa.`, 'success');
-          getListHR();
-        })
-        .catch((error) => {
-          console.error("Error deleting HR:", error);
-          Swal.fire('Lỗi!', 'Xóa không thành công.', 'error');
-        });
-    }
-  });
-};
 
-window.deleteHR = deleteHR;
 
-// Edit HR
-const editHR = (MSNV) => {
-  const promise = hrService.editHRAPI(MSNV);
-  promise
-    .then(() => {
-      getListHR();
-    })
-    .catch((error) => {
-      console.error("Error editing HR:", error);
-    });
-};
-window.editHR = editHR;
+
 
 
 
@@ -137,7 +87,7 @@ const renderHR = (data) => {
         <td>${hr.Block}</td>
         <td>${cbqlMap[hr.CBQL] || hr.CBQL}</td> 
         <td>
-          <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal" onclick="editHR('${hr.id}')">Edit</button>        
+          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="editHR('${hr.id}')">Edit</button>        
           <button class="btn btn-danger" onclick="deleteHR('${hr.id}', '${hr.HoVaTen.replace(/'/g, "\\'")}')">Delete</button>
 
         </td>
@@ -148,6 +98,114 @@ const renderHR = (data) => {
 };
 // Call function to get data
 getListHR();
+// Thêm nhân viên
+getEls("btnAdd").onclick = function () {
+  // Tạo đối tượng nhân viên
+  const nhanVienMoi = getValue();
+  // Gọi API thêm nhân viên
+  hrService.addHRAPI(nhanVienMoi)
+    .then(() => {
+      Swal.fire('Thành công!', 'Nhân viên đã được thêm.', 'success');
+      getListHR();
+      // Đóng modal
+      $('#myModal').modal('hide');
+    })
+    .catch((error) => {
+      console.error("Error adding HR:", error);
+      Swal.fire('Lỗi!', 'Thêm không thành công.', 'error');
+    });
+};
+
+// Edit HR
+// Edit HR dựa vào id
+// Click vào nút EditHR Hiện modal với nội dung của nhân viên
+const editHR = (id) => {
+  getEls("btnUpdate").style.display = "block";
+  getEls("modalHeader").innerHTML = "Cập Nhật Nhân Viên";
+  getEls("btnAdd").style.display = "none"; // Hiện input id
+  hrService.editHRAPI(id)
+    .then((result) => {
+      const hr = result.data;
+      // Điền thông tin vào form
+      getEls("idNhanVien").value = hr.id;
+      getEls("maNhanVien").value = hr.MSNV;
+      getEls("TenNV").value = hr.HoVaTen;
+      getEls("HDLD").value = hr.HDLD;
+      getEls("PhongBan").value = hr.PhongBan;
+      getEls("SDT").value = hr.SDT;
+      getEls("MBX").value = hr.MBX;
+      getEls("Mail").value = hr.Mail;
+      getEls("NgayVaoCT").value = hr.ThamNien; // Giả sử ThamNien là ngày vào công ty
+      getEls("Block").value = hr.Block;
+      getEls("CBQL").value = hr.CBQL;
+
+    })
+    .catch((error) => {
+      console.error("Error fetching HR data for edit:", error);
+    });
+};
+window.editHR = editHR;
+// Cập nhật nhân viên
+getEls("btnUpdate").onclick = function () {
+  // Lấy giá trị từ form
+  const nhanVienCapNhat = getValue();
+  // Gọi API cập nhật nhân viên
+  hrService.editHRAPI(nhanVienCapNhat.id, nhanVienCapNhat)
+    .then(() => {
+      Swal.fire('Thành công!', 'Nhân viên đã được cập nhật.', 'success');
+      getListHR();
+      // Đóng modal
+      $('#myModal').modal('hide');
+    })
+    .catch((error) => {
+      console.error("Error updating HR:", error);
+      Swal.fire('Lỗi!', 'Cập nhật không thành công.', 'error');
+    });
+};
+
+//Delete HR  dựa vào MSNV - Thông báo trước khi thực hiện xóa
+const deleteHR = (id, HoVaTen) => {
+  Swal.fire({
+    title: `Bạn có chắc muốn xóa ${HoVaTen}?`,
+    text: "Thao tác này không thể hoàn tác!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Xóa',
+    cancelButtonText: 'Hủy',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      hrService.deleteHRAPI(id)
+        .then(() => {
+          Swal.fire('Đã xóa!', `Nhân viên ${HoVaTen} đã được xóa.`, 'success');
+          getListHR();
+        })
+        .catch((error) => {
+          console.error("Error deleting HR:", error);
+          Swal.fire('Lỗi!', 'Xóa không thành công.', 'error');
+        });
+    }
+  });
+};
+
+window.deleteHR = deleteHR;
+
+// Thêm sự kiện tìm kiếm nhân viên theo tên
+getEls("txtTimKiem").oninput = function () {
+  const name = getEls("txtTimKiem").value.trim();
+  if (name) {
+    hrService
+      .searchHRByName(name)
+      .then((res) => {
+        renderHR(res.data);
+      })
+      .catch(() => {
+        Swal.fire("Lỗi!", "Không tìm được nhân sự.", "error");
+      });
+  } else {
+    getListHR();
+  }
+};
+
 // Xuất Excel tbDanh Sách SP
 const onExportExcel = () => {
   hrService.getListHRAPI().then((response) => {
@@ -162,14 +220,14 @@ const onExportExcel = () => {
         index + 1,
         hr.MSNV,
         hr.HoVaTen,
-        hr.hdld,
-        hr.phongBan,
-        hr.sdt,
-        hr.mbx,
-        hr.mail,
-        hr.thamNien,
-        hr.block,
-        hr.cbql
+        hr.HDLD in hdldMAP ? hdldMAP[hr.HDLD] : hr.HDLD,
+        hr.PhongBan in phongBanMap ? phongBanMap[hr.PhongBan] : hr.PhongBan,        
+        hr.SDT,
+        hr.MBX,
+        hr.Mail,
+        hr.ThamNien,
+        hr.Block,
+        hr.CBQL in cbqlMap ? cbqlMap[hr.CBQL] : hr.CBQL,
       ]);
     });
 
@@ -179,7 +237,7 @@ const onExportExcel = () => {
     XLSX.utils.book_append_sheet(workbook, worksheet, "DanhSachSP");
 
     // Xuất file
-    XLSX.writeFile(workbook, "product_list.xlsx");
+    XLSX.writeFile(workbook, "list_nhan_su.xlsx");
   });
 };
 window.onExportExcel = onExportExcel;
