@@ -1,6 +1,4 @@
 import HRService from "./Services/hr.js";
-import nhanVien from "./Models/nhanVien.js";
-// Import thư viện SweetAlert2
 const hrService = new HRService();
 const getEls = (id) => document.getElementById(id);
 const getValue = () => {
