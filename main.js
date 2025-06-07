@@ -1,4 +1,5 @@
 import HRService from "./Services/hr.js";
+import nhanVien from "./models/nhanvien.js";
 const hrService = new HRService();
 const getEls = (id) => document.getElementById(id);
 const getValue = () => {
