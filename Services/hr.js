@@ -35,17 +35,14 @@ class HRService {
         });
         return promise
     }
-    // Tìm kiếm nhân viên theo tên
-   searchHRByName(name) {
-    return axios.get("https://683dacda199a0039e9e66ead.mockapi.io/api/HRSG01")
-        .then(res => {
-            const filtered = res.data.filter(item =>
-                item.name.toLowerCase().includes(name.toLowerCase())
-            );
-            return { data: filtered };
+    // Tìm kiếm dựa vào nội dung nhập của người dùng
+    searchHRAPI(keyword) {
+        const promise = axios({
+            url: `https://683dacda199a0039e9e66ead.mockapi.io/api/HRSG01?keyword=${keyword}`,
+            method: "GET",
         });
-}
-
+        return promise
+    }
 
 }
 export default HRService
