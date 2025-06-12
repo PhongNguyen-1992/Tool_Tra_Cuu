@@ -1,26 +1,3 @@
-function openModal(src) {
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImage");
-
-  // Gán lại src mỗi lần mở
-  modalImg.src = src;
-
-  // Hiện modal
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-}
-
-function closeModal() {
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImage");
-
-  // Ẩn modal
-  modal.classList.remove("flex");
-  modal.classList.add("hidden");
-
-  // Reset src để tránh lỗi cũ còn giữ
-  modalImg.src = "";
-}
 function mangCham() {
   const noti = document.getElementById("noti");
 

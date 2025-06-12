@@ -2304,6 +2304,27 @@
     <script>
         new WOW().init();
     </script>
+  <script>
+  function openModal(src) {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImage");
+    modalImg.src = src;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  }
+
+ function closeModal(e = null) {
+    // Nếu có sự kiện và click vào ảnh thì không đóng
+    if (e && e.target.id !== "imgModal" && e.target.id !== "closeButton") return;
+
+    const modal = document.getElementById("imgModal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    const modalImg = document.getElementById("modalImage");
+    modalImg.src = "";
+  }
+    document.getElementById("imgModal").addEventListener("click", closeModal);
+</script>
     <!-- Ontotop -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
