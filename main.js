@@ -1,9 +1,5 @@
-function mangCham() {
-  const noti = document.getElementById("noti");
-
-  if (noti.classList.contains("hidden")) // Kiểm tra thuộc tính hidden
-  {
-    const content = `
+function mangCham() {  
+     const content = `
       <b style="color:	#FF9800">Bước 1:</b> Vào PTDocTor/ Login Modem Device Table Kiểm Tra Số Lượng Đang Truy Cập <br>
       <b style="color:	#FF9800">Bước 2:</b> Trao Đổi Cùng KHG Khai Thác Thông Tin <br>
       - Anh chị sử dụng khoảng bao nhiêu thiết bị kết nối wifi trong nhà mình ạ?<br>
@@ -16,15 +12,21 @@ function mangCham() {
       - Trường hợp không đảm bảo vùng phủ 5G tư vấn trang bị AP/ Di dời modem <br>
         + Nếu KHG không đồng ý lắp test và tạo tool SR DVKH CN <br>
         + Nếu KHG đồng ý thì tư vấn bán giá trên Sản Phẩm Dịch Vụ <a href="#SPDV"><button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">SPDV</button></a>
-    `;
-    noti.innerHTML = content;
-    noti.classList.remove("hidden");
-  } else {
-    // Nếu đang hiện => ẩn đi
-    noti.classList.add("hidden");
-    noti.innerHTML = "";
-  }
+    `; 
+    return content 
+
+
+document.getElementById("mangCham").onclick = () => {
+  //sửa tên modal
+  const modalTitle = document.getElementById("title_modal_xuli");
+  modalTitle.innerText = "Xử Lý Mạng Chậm";
+  const modalBody = document.getElementById("body_modal_xuli");
+  modalBody.innerHTML = mangCham();
 }
+
+
+
+
 function ketNoi() {
   const noti = document.getElementById("noti");
 

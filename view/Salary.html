@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Lương</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f1419 0%, #1a202c 50%, #2d3748 100%);
+            min-height: 100vh;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+        }
+        
+        .input-glow:focus {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .checkbox-custom {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .checkbox-custom:checked {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-animation:nth-child(2) {
+            animation-delay: -2s;
+        }
+        
+        .floating-animation:nth-child(3) {
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.4); }
+        }
+        
+        .select-dark {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .select-dark option {
+            background: #1a202c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="text-white overflow-x-hidden">
+    <!-- Background decorative elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 floating-animation"></div>
+        <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 floating-animation"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 floating-animation"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="relative z-10 py-8 text-center">
+        <h1 class="gradient-text text-5xl font-bold uppercase tracking-wider mb-2">
+            Tính Lương Nhanh
+        </h1>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="relative z-10 flex items-center justify-center min-h-screen px-4 py-8">
+        <div class="w-full max-w-6xl flex flex-col lg:flex-row gap-8">
+            
+            <!-- Form Section -->
+            <div class="flex-1">
+                <div class="glass-card rounded-3xl p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center gradient-text">Nhập Thông Tin</h2>
+                    
+                    <form id="salaryForm" class="space-y-6">
+                        <!-- Hoàn Tất Triển Khai -->
+                        <div class="relative group">
+                            <input type="number" id="HT_TK" 
+                                class="input-glow block px-4 pb-3 pt-6 w-full text-white bg-transparent rounded-xl border-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 peer transition-all duration-300"
+                                placeholder=" " 
+                                onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '+' && event.key !== '-';" />
+                            <label for="HT_TK"
+                                class="absolute text-gray-400 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-3 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">
+                                🚀 Hoàn Tất Triển Khai
+                            </label>
+                        </div>
+
+                        <!-- Hoàn Tất Swap -->
+                        <div class="relative group">
+                            <input type="number" id="HT_Swap" 
+                                class="input-glow block px-4 pb-3 pt-6 w-full text-white bg-transparent rounded-xl border-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 peer transition-all duration-300"
+                                placeholder=" " 
+                                onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '+' && event.key !== '-';" />
+                            <label for="HT_Swap"
+                                class="absolute text-gray-400 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-3 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">
+                                🔄 Hoàn Tất Swap
+                            </label>
+                        </div>
+
+                        <!-- Active Sở Hữu -->
+                        <div class="relative group">
+                            <input type="number" id="AU" 
+                                class="input-glow block px-4 pb-3 pt-6 w-full text-white bg-transparent rounded-xl border-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 peer transition-all duration-300"
+                                placeholder=" " 
+                                onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '+' && event.key !== '-';" />
+                            <label for="AU"
+                                class="absolute text-gray-400 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-3 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">
+                                ⚡ Active Sở Hữu
+                            </label>
+                        </div>
+                        
+                        <!-- Hệ Số Bảo Trì -->
+                        <div class="space-y-2">
+                            <label class="text-gray-300 font-medium">🔧 Hệ Số Bảo Trì</label>
+                            <select id="He_So" class="select-dark w-full p-4 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                                <option value="">Chọn Hệ Số</option>
+                                <option value="1">1.0</option>
+                                <option value="0.9">0.9</option>
+                            </select>
+                        </div>
+
+                        <!-- Bậc Nghề -->
+                        <div class="space-y-2">
+                            <label class="text-gray-300 font-medium">🎯 Bậc Nghề</label>
+                            <select id="Bac_Nghe" class="select-dark w-full p-4 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                                <option value="">Chọn Bậc Nghề</option>
+                                <option value="0">Bậc 1</option>
+                                <option value="500000">Bậc 2</option>
+                                <option value="1000000">Bậc 3</option>
+                                <option value="1500000">Bậc 4</option>
+                                <option value="2000000">Bậc 5</option>
+                                <option value="2500000">Bậc 6</option>
+                                <option value="3000000">Bậc 7</option>
+                            </select>
+                        </div>
+
+                        <!-- Checkboxes -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="glass-card p-4 rounded-xl">
+                                <div class="flex items-center space-x-3">
+                                    <input id="check_1" type="checkbox" value="1000000" 
+                                        class="checkbox-custom w-5 h-5 rounded focus:ring-2 focus:ring-blue-500" />
+                                    <label for="check_1" class="text-gray-300 font-medium cursor-pointer">
+                                        🏆 Đạt KPIs
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl">
+                                <div class="flex items-center space-x-3">
+                                    <input id="check_2" type="checkbox" value="800000" checked
+                                        class="checkbox-custom w-5 h-5 rounded focus:ring-2 focus:ring-blue-500" />
+                                    <label for="check_2" class="text-gray-300 font-medium cursor-pointer">
+                                        ✅ Đủ 2 KPDV
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="BTN__Salary"
+                            class="btn-gradient w-full py-4 px-8 rounded-xl font-bold text-lg uppercase tracking-wider">
+                            💰 Tính Lương Ngay
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Result & Notes Section -->
+            <div class="flex-1 space-y-6">
+                <!-- Result Display -->
+                <div id="result-section" class="result-card rounded-3xl p-8 text-center hidden">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">🎉 Kết Quả Tính Lương</h3>
+                    <div id="salary-result" class="text-4xl font-bold text-green-400 mb-4"></div>
+                    <div id="salary-breakdown" class="text-gray-300 space-y-2"></div>
+                </div>
+
+                <!-- Notes Section -->
+                <div class="glass-card rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-red-400">📋 Lưu Ý Quan Trọng</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                                </svg>
+                            </div>
+                            <p class="text-gray-300">Trung bình 1 ca triển khai: <span class="font-bold text-green-400">100.000 VND</span></p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                                </svg>
+                            </div>
+                            <p class="text-gray-300">Hệ số bảo trì: <span class="font-bold text-blue-400">Liên hệ đội trưởng</span></p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-white text-sm font-bold">!</span>
+                            </div>
+                            <p class="text-gray-300">Kết quả tính toán chỉ mang tính chất <span class="font-bold text-yellow-400">tham khảo</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Salary calculation logic
+        document.getElementById('salaryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const htTk = parseFloat(document.getElementById('HT_TK').value) || 0;
+            const htSwap = parseFloat(document.getElementById('HT_Swap').value) || 0;
+            const au = parseFloat(document.getElementById('AU').value) || 0;
+            const heSo = parseFloat(document.getElementById('He_So').value) || 1;
+            const bacNghe = parseFloat(document.getElementById('Bac_Nghe').value) || 0;
+            const kpiBonus = document.getElementById('check_1').checked ? 1000000 : 0;
+            const kpdvBonus = document.getElementById('check_2').checked ? 800000 : 0;
+            
+            // Calculate salary components
+            const deploymentSalary = htTk * 100000; // 100k per deployment
+            const swapSalary = htSwap * 60000; // Assuming 50k per swap
+            const activeSalary = au * 4700; // Assuming 30k per active ownership
+            const levelBonus = bacNghe;
+            const bonuses = kpiBonus + kpdvBonus;
+            
+            // Calculate total
+            const baseSalary = (deploymentSalary + swapSalary + activeSalary) * heSo;
+            const totalSalary = baseSalary + levelBonus + bonuses;
+            
+            // Display result
+            const resultSection = document.getElementById('result-section');
+            const salaryResult = document.getElementById('salary-result');
+            const salaryBreakdown = document.getElementById('salary-breakdown');
+            
+            salaryResult.textContent = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(totalSalary);
+            
+            salaryBreakdown.innerHTML = `
+                <div>💼 Lương TK-BT: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(baseSalary)}</div>
+                <div>🎯 Lương bậc nghề: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(levelBonus)}</div>
+                <div>🏆 Thưởng KPI/KPDV: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(bonuses)}</div>
+                <div class="pt-2 border-t border-gray-600 mt-2 font-bold">
+                    💰 Tổng lương: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(totalSalary)}
+                </div>
+            `;
+            
+            resultSection.classList.remove('hidden');
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add input animations
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('scale-105');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('scale-105');
+            });
+        });
+
+        // Add select animations
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', function() {
+                this.classList.add('animate-pulse');
+                setTimeout(() => {
+                    this.classList.remove('animate-pulse');
+                }, 300);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Xử Lý Lỗi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1d2e 50%, #0f1319 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes grid-move {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #00d4ff, #0099cc, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .header .subtitle {
+            color: #8892b0;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* Status Cards */
+        .status-section {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .section-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .warning-note {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: #ffc107;
+        }
+
+        .status-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+        }
+
+        .status-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .status-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            animation: pulse-green 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-green {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            }
+
+            50% {
+                opacity: 0.7;
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            }
+        }
+
+        .status-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .status-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.4rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-inside {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+        }
+
+        .btn-modem {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Diagnostic Results */
+        .diagnostic-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .result-column {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .result-column h3 {
+            color: #00ff88;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-column.warning h3 {
+            color: #ff6b6b;
+        }
+
+        .result-column.error h3 {
+            color: #ff4757;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .result-icon {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .result-icon.success {
+            background: #00ff88;
+        }
+
+        .result-icon.warning {
+            background: #ffc107;
+        }
+
+        .result-icon.error {
+            background: #ff4757;
+        }
+
+        /* Error Categories */
+        .error-section {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .error-categories {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .error-category {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .error-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .error-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .error-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .error-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-item.internet {
+            --accent-color: #ff6b6b;
+        }
+
+        .error-item.paytv {
+            --accent-color: #4ecdc4;
+        }
+
+        .error-item.camera {
+            --accent-color: #45b7d1;
+        }
+
+        .error-text {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .error-icon-text {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .status-cards,
+            .diagnostic-results {
+                grid-template-columns: 1fr;
+            }
+
+            .error-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal styles for solutions */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(26, 29, 46, 0.95), rgba(15, 19, 25, 0.95));
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #00d4ff;
+        }
+
+        .modal h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .solution-steps {
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .solution-steps ol {
+            padding-left: 1.5rem;
+        }
+
+        .solution-steps li {
+            margin-bottom: 0.5rem;
+        }
+    </style>    
+</head>
+
+<body>
+
+</body>
+<div class="bg-grid"></div>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Tool Xử Lý Lỗi</h1>
+        <p class="subtitle">Chẩn đoán và khắc phục sự cố nhanh chóng</p>
+    </div>
+
+    <!-- Kiểm tra Giai đoạn 1 -->
+    <div class="status-section">
+        <div class="section-title">
+            🔍 Kiểm Tra Giai Đoạn 1
+        </div>
+
+        <div class="warning-note">
+            ⚠️ Lưu ý: Việc kiểm tra Giai Đoạn 2 là bắt buộc nhằm đảm bảo quá trình bảo trì được thực hiện đầy đủ và
+            chính xác.
+        </div>
+
+        <div class="status-cards">
+            <div class="status-card">
+                <div class="status-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <div class="status-icon"></div>
+                        <div class="status-title">Tín Hiệu Quang Tại Nhà Khách Hàng ≥ -23.5dBM</div>
+                    </div>
+                    <div class="status-actions">
+                        <button class="action-btn btn-inside">Inside</button>
+                        <button class="action-btn btn-modem">Modem</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="status-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <div class="status-icon"></div>
+                        <div class="status-title">Các Liên Kết Nội Trong 24H/48H</div>
+                    </div>
+                    <div class="status-actions">
+                        <button class="action-btn btn-inside">Inside</button>
+                        <button class="action-btn btn-modem">Modem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagnostic Results -->
+        <div class="diagnostic-results">
+            <div class="result-column">
+                <h3>✅ Tín Hiệu Và Các Liên Kết Nội OK</h3>
+                <div class="result-item">
+                    <div class="result-icon success"></div>
+                    <span>Tiến Hành Kiểm Tra Qua Giai Đoạn 2</span>
+                </div>
+            </div>
+
+            <div class="result-column warning">
+                <h3>⚠️ Tín Hiệu Quang NOK/ Các Liên Kết Nội OK</h3>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Kiểm Tra Suy Hao Tập Điểm Bằng ICDP</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Kiểm Tra Bần Lai 2FC Modem, Tập Điểm</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Thay Thế Thiết Bị</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Keo Mối Toàn Tuyến</span>
+                </div>
+            </div>
+
+            <div class="result-column error">
+                <h3>❌ Tín Hiệu Quang OK/ Các Liên Kết Nội NOK</h3>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Kiểm Tra Thay Nguồn MoĐem</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Kiểm Tra Firmware ONT (Firmware Đúng: 24.09.18.1)</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-icon error"></div>
+                    <span>Thay Thiết Bị Modem</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kiểm tra Giai đoạn 2 -->
+    <div class="status-section">
+        <div class="section-title">
+            🔧 Kiểm Tra Giai Đoạn 2
+        </div>
+
+        <div class="warning-note">
+            ⚠️ Lưu ý: Việc kiểm tra Giai Đoạn 1 là bắt buộc nhằm đảm bảo quá trình bảo trì được thực hiện đầy đủ và
+            chính xác.
+        </div>
+
+        <!-- Error Categories -->
+        <div class="error-categories">
+            <!-- Internet Errors -->
+            <div class="error-category">
+                <h3 class="category-title">
+                    🌐 Lỗi Internet
+                </h3>
+                <div class="error-grid">
+                    <div class="error-item internet" onclick="showSolution('Mạng Chậm/Chập Chờn')">
+                        <div class="error-text">
+                            <span class="error-icon-text">📶</span>
+                            <span>Mạng Chậm/Chập Chờn</span>
+                        </div>
+                    </div>
+                    <div class="error-item internet" onclick="showSolution('Có Wifi Nhưng Không Kết Nối Được')">
+                        <div class="error-text">
+                            <span class="error-icon-text">📶</span>
+                            <span>Có Wifi Nhưng Không Kết Nối Được</span>
+                        </div>
+                    </div>
+                    <div class="error-item internet" onclick="showSolution('Modem Sáng Đèn Không Thấy Tên Wifi')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔴</span>
+                            <span>Modem Sáng Đèn Không Thấy Tên Wifi</span>
+                        </div>
+                    </div>
+                    <div class="error-item internet" onclick="showSolution('Kết Nối Được Wifi Không Vào Mạng Được')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔗</span>
+                            <span>Kết Nối Được Wifi Không Vào Mạng Được</span>
+                        </div>
+                    </div>
+                    <div class="error-item internet" onclick="showSolution('Không Truy Cập Được WEB/App Cụ Thể')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🌐</span>
+                            <span>Không Truy Cập Được WEB/App Cụ Thể</span>
+                        </div>
+                    </div>
+                    <div class="error-item internet" onclick="showSolution('Cấu Hình Gói Gia Phiền')">
+                        <div class="error-text">
+                            <span class="error-icon-text">⚙️</span>
+                            <span>Cấu Hình Gói Đa Phiên</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pay TV Errors -->
+            <div class="error-category">
+                <h3 class="category-title">
+                    📺 Lỗi PAYTV/FPT PLAY
+                </h3>
+                <div class="error-grid">
+                    <div class="error-item paytv" onclick="showSolution('Thủ Báo Không Có Tín Hiệu')">
+                        <div class="error-text">
+                            <span class="error-icon-text">📡</span>
+                            <span>Thủ Báo Không Có Tín Hiệu</span>
+                        </div>
+                    </div>
+                    <div class="error-item paytv" onclick="showSolution('Thủ Báo Lỗi Kết Nối Internet')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔌</span>
+                            <span>Thủ Báo Lỗi Kết Nối Internet</span>
+                        </div>
+                    </div>
+                    <div class="error-item paytv" onclick="showSolution('Truyền Hình Xem Màn Hình Đen')">
+                        <div class="error-text">
+                            <span class="error-icon-text">⬛</span>
+                            <span>Truyền Hình Xem Màn Hình Đen</span>
+                        </div>
+                    </div>
+                    <div class="error-item paytv" onclick="showSolution('Youtube Xem Không Được')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🎬</span>
+                            <span>Youtube Xem Không Được</span>
+                        </div>
+                    </div>
+                    <div class="error-item paytv" onclick="showSolution('Không Xem Được Kho Ứng Dụng')">
+                        <div class="error-text">
+                            <span class="error-icon-text">📱</span>
+                            <span>Không Xem Được Kho Ứng Dụng</span>
+                        </div>
+                    </div>
+                    <div class="error-item paytv" onclick="showSolution('Có Hình Không Có Tiếng')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔇</span>
+                            <span>Có Hình Không Có Tiếng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Camera Errors -->
+            <div class="error-category">
+                <h3 class="category-title">
+                    📹 Lỗi FPT CAMERA
+                </h3>
+                <div class="error-grid">
+                    <div class="error-item camera" onclick="showSolution('Hướng Dẫn Active Cloud Camera')">
+                        <div class="error-text">
+                            <span class="error-icon-text">☁️</span>
+                            <span>Hướng Dẫn Active Cloud Camera</span>
+                        </div>
+                    </div>
+                    <div class="error-item camera" onclick="showSolution('Hướng Dẫn Replace MAC Camera')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔄</span>
+                            <span>Hướng Dẫn Replace MAC Camera</span>
+                        </div>
+                    </div>
+                    <div class="error-item camera" onclick="showSolution('Hướng Dẫn Cấu Hình Camera Đầu Ghi')">
+                        <div class="error-text">
+                            <span class="error-icon-text">⚙️</span>
+                            <span>Hướng Dẫn Cấu Hình Camera Đầu Ghi</span>
+                        </div>
+                    </div>
+                    <div class="error-item camera" onclick="showSolution('Không Full Record/Chuyển Động')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🎥</span>
+                            <span>Không Full Record/Chuyển Động</span>
+                        </div>
+                    </div>
+                    <div class="error-item camera" onclick="showSolution('Không Thông Báo Chuyển Động')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔔</span>
+                            <span>Không Thông Báo Chuyển Động</span>
+                        </div>
+                    </div>
+                    <div class="error-item camera" onclick="showSolution('Không Phát Tiếng')">
+                        <div class="error-text">
+                            <span class="error-icon-text">🔊</span>
+                            <span>Không Phát Tiếng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for solutions -->
+
+<div id="solutionModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <div id="modalContent" class="solution-steps"></div>
+    </div>
+</div>
+
+<script src="../js/xuli.js"></script>
+</body>
+
+</html>

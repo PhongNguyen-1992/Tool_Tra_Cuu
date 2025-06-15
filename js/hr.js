@@ -136,7 +136,7 @@ const editHR = (id) => {
       getEls("SDT").value = hr.SDT;
       getEls("MBX").value = hr.MBX;
       getEls("Mail").value = hr.Mail;
-      getEls("NgayVaoCT").value = hr.ThamNien; // Giả sử ThamNien là ngày vào công ty
+      getEls("NgayVaoCT").value = hr.thamNien; // Ngày vào công ty bằng ngày người nhập
       getEls("Block").value = hr.Block;
       getEls("CBQL").value = hr.CBQL;
 
