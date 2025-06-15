@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPT Swap Box Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+            display: block;
+            margin: 0 auto 30px auto;
+            min-width: 250px;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn-main:active {
+            transform: translateY(-1px);
+        }
+
+        .table-container {
+            display: none;
+            animation: fadeInUp 0.6s ease;
+            margin-bottom: 30px;
+        }
+
+        .table-container.show {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .swap-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .swap-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .swap-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 1rem;
+        }
+
+        .swap-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .price.gray {
+            color: #95a5a6;
+        }
+
+        .guide-section {
+            display: none;
+            margin-top: 30px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .guide-section.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .btn-guide {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(250, 112, 154, 0.3);
+            margin: 10px;
+        }
+
+        .btn-guide:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(250, 112, 154, 0.4);
+        }
+
+        .guide-content {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-content.show {
+            display: block;
+            animation: expandDown 0.5s ease;
+        }
+
+        @keyframes expandDown {
+            from {
+                max-height: 0;
+                opacity: 0;
+            }
+            to {
+                max-height: 1000px;
+                opacity: 1;
+            }
+        }
+
+        .guide-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            pointer-events: none;
+        }
+
+        .guide-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #fee140;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-step h3 {
+            color: #fee140;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .guide-step p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background: rgba(254, 225, 64, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .swap-table {
+                font-size: 0.9rem;
+            }
+            
+            .swap-table th,
+            .swap-table td {
+                padding: 10px 5px;
+            }
+
+            .btn-main {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📦 FPT SWAP BOX V1, V2</h1>
+            <p>Hệ thống quản lý đổi thiết bị thông minh</p>
+        </div>
+
+        <div class="content">
+            <button class="btn-main" onclick="toggleTable()">
+                <span class="icon">📋</span>Chính Sách Swap
+            </button>
+
+            <div class="table-container" id="tableContainer">
+                <table class="swap-table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Loại Box Swap</th>
+                            <th>Phí khách trả</th>
+                            <th>Thiết bị Box</th>
+                            <th>Hoa hồng tư vấn PNC</th>
+                            <th>Công tâp đặt PNC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td><strong>Box 1</strong></td>
+                            <td class="price">110.000đ</td>
+                            <td>650 new</td>
+                            <td class="price gray">25.000đ</td>
+                            <td class="price gray">45.000đ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td><strong>Box 2</strong></td>
+                            <td class="price">330.000đ</td>
+                            <td>650 new</td>
+                            <td class="price gray">20.000đ</td>
+                            <td class="price gray">45.000đ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td><strong>Box 3</strong></td>
+                            <td class="price">330.000đ</td>
+                            <td>650 new</td>
+                            <td class="price gray">20.000đ</td>
+                            <td class="price gray">45.000đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="guide-section" id="guideSection">
+                    <div style="text-align: center; margin: 20px 0;">
+                        <button class="btn-guide" onclick="showGuide()">
+                            <span class="icon">📖</span>Hướng Dẫn Active
+                        </button>
+                    </div>
+
+                    <div class="guide-content" id="guideContent">
+                        <div class="guide-step">
+                            <h3>🔐 BƯỚC 1: TÀI KHOẢN</h3>
+                            <p><strong>Khách hàng chưa liên kết tài khoản:</strong> Phải liên kết tài khoản trên Box V1, V2 với <span class="highlight">số điện thoại của khách hàng</span>.</p>
+                            <p><strong>Khách hàng đã liên kết tài khoản:</strong> Cần kiểm tra xem số điện thoại có còn sử dụng hay không. Nếu không, phải thay số điện thoại khác.</p>
+                        </div>
+
+                        <div class="guide-step">
+                            <h3>📱 BƯỚC 2: THIẾT BỊ</h3>
+                            <p>Cần thay thẻ <span class="highlight">Box 650</span> để hệ thống ghi nhận MAC Box mới thay cho Box V1, V2.</p>
+                            <p><strong>Lưu ý:</strong> Nếu không thay thẻ, hệ thống vẫn ghi nhận khách hàng sử dụng Box V1, V2.</p>
+                        </div>
+
+                        <div class="guide-step">
+                            <h3>⚙️ CÁC THAO TÁC QUAN TRỌNG</h3>
+                            <p>• <strong>Tình Trạng Khách Hàng:</strong> Kiểm tra trạng thái tài khoản</p>
+                            <p>• <strong>Các Lần Kết Nối:</strong> Xem lịch sử kết nối thiết bị</p>
+                            <p>• <strong>Reset Mac:</strong> Đặt lại địa chỉ MAC khi cần thiết</p>
+                            <p>• <strong>Thông Tin IPTV:</strong> Cập nhật MAC cho IPTV Box</p>
+                        </div>
+
+                        <button class="close-btn" onclick="hideGuide()">Đóng hướng dẫn</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTable() {
+            const container = document.getElementById('tableContainer');
+            const guideSection = document.getElementById('guideSection');
+            
+            if (container.classList.contains('show')) {
+                container.classList.remove('show');
+                guideSection.classList.remove('show');
+            } else {
+                container.classList.add('show');
+                setTimeout(() => {
+                    guideSection.classList.add('show');
+                }, 300);
+            }
+        }
+
+        function showGuide() {
+            const guideContent = document.getElementById('guideContent');
+            guideContent.classList.add('show');
+        }
+
+        function hideGuide() {
+            const guideContent = document.getElementById('guideContent');
+            guideContent.classList.remove('show');
+        }
+
+        // Animation au chargement
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

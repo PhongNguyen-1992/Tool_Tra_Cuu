@@ -59,6 +59,138 @@ const solutions = {
             <li>Chờ hệ thống cập nhật (1-2h)</li>
             <li>Khởi động lại modem</li>
         </ol>
+    `,
+    'Tivi Không Có Tín Hiệu': `
+        <ol>
+            <li>Kiểm tra kết nối cáp từ đầu thu đến TV</li>
+            <li>Kiểm tra nguồn điện đầu thu và TV</li>
+            <li>Thử thay cáp HDMI/AV khác</li>
+            <li>Kiểm tra chọn đúng nguồn tín hiệu trên TV (HDMI1, HDMI2...)</li>
+            <li>Khởi động lại đầu thu (rút điện 30 giây)</li>
+            <li>Liên hệ kỹ thuật nếu vẫn không có tín hiệu</li>
+        </ol>
+    `,
+    
+    'Tivi Lỗi Kết Nối Internet': `
+        <ol>
+            <li>Kiểm tra cáp mạng kết nối đầu thu</li>
+            <li>Kiểm tra đèn tín hiệu trên modem</li>
+            <li>Khởi động lại modem và đầu thu</li>
+            <li>Kiểm tra cài đặt mạng trên đầu thu</li>
+            <li>Thử kết nối WiFi nếu có tính năng</li>
+            <li>Reset cài đặt mạng đầu thu về mặc định</li>
+        </ol>
+    `,
+    
+    'Truyền Hình Xem Màn Hình Đen': `
+        <ol>
+            <li>Kiểm tra cáp kết nối đầu thu và TV</li>
+            <li>Thử chuyển kênh khác</li>
+            <li>Kiểm tra độ phân giải đầu ra (720p/1080p)</li>
+            <li>Khởi động lại đầu thu</li>
+            <li>Cập nhật danh sách kênh</li>
+            <li>Kiểm tra tài khoản và gói cước</li>
+        </ol>
+    `,
+    
+    'Youtube Xem Không Được': `
+        <ol>
+            <li>Kiểm tra kết nối internet đầu thu</li>
+            <li>Đăng xuất và đăng nhập lại YouTube</li>
+            <li>Xóa cache ứng dụng YouTube</li>
+            <li>Cập nhật ứng dụng YouTube</li>
+            <li>Khởi động lại đầu thu</li>
+            <li>Kiểm tra tốc độ mạng (tối thiểu 5Mbps)</li>
+        </ol>
+    `,
+    
+    'Không Xem Được Kho Ứng Dụng': `
+        <ol>
+            <li>Kiểm tra kết nối internet</li>
+            <li>Đăng nhập lại tài khoản FPT Play</li>
+            <li>Cập nhật firmware đầu thu</li>
+            <li>Xóa cache hệ thống</li>
+            <li>Khởi động lại đầu thu</li>
+            <li>Liên hệ hỗ trợ cập nhật danh sách app</li>
+        </ol>
+    `,
+    
+    'Có Hình Không Có Tiếng': `
+        <ol>
+            <li>Kiểm tra âm lượng TV và đầu thu</li>
+            <li>Kiểm tra cài đặt âm thanh (Stereo/5.1)</li>
+            <li>Thử cáp âm thanh khác</li>
+            <li>Kiểm tra kết nối HDMI (hỗ trợ âm thanh)</li>
+            <li>Reset cài đặt âm thanh về mặc định</li>
+            <li>Kiểm tra tính năng mute trên remote</li>
+        </ol>
+    `,
+    
+    // Solutions Camera
+    'Hướng Dẫn Active Cloud Camera': `
+        <ol>
+            <li>Tải app FPT Camera trên điện thoại</li>
+            <li>Đăng ký/đăng nhập tài khoản FPT</li>
+            <li>Chọn "Thêm thiết bị" → Quét QR code camera</li>
+            <li>Kết nối camera với WiFi nhà</li>
+            <li>Đặt tên và vị trí cho camera</li>
+            <li>Kích hoạt dịch vụ Cloud lưu trữ</li>
+        </ol>
+    `,
+    
+    'Hướng Dẫn Replace MAC Camera': `
+        <ol>
+            <li>Ghi nhận MAC address camera mới</li>
+            <li>Đăng nhập portal quản lý FPT</li>
+            <li>Vào mục "Quản lý thiết bị Camera"</li>
+            <li>Chọn camera cần thay → "Thay thế thiết bị"</li>
+            <li>Nhập MAC address mới</li>
+            <li>Xác nhận và đợi hệ thống cập nhật</li>
+        </ol>
+    `,
+    
+    'Hướng Dẫn Cấu Hình Camera Đầu Ghi': `
+        <ol>
+            <li>Kết nối đầu ghi với màn hình qua HDMI</li>
+            <li>Đăng nhập hệ thống (admin/123456)</li>
+            <li>Vào "Camera Management" → "Add Camera"</li>
+            <li>Nhập IP camera và thông tin đăng nhập</li>
+            <li>Cấu hình độ phân giải và FPS</li>
+            <li>Test kết nối và lưu cấu hình</li>
+        </ol>
+    `,
+    
+    'Không Full Record/Chuyển Động': `
+        <ol>
+            <li>Kiểm tra dung lượng ổ cứng/thẻ nhớ</li>
+            <li>Cấu hình lại chế độ ghi hình</li>
+            <li>Kiểm tra cài đặt Motion Detection</li>
+            <li>Điều chỉnh độ nhạy cảm biến</li>
+            <li>Kiểm tra vùng phát hiện chuyển động</li>
+            <li>Restart camera và kiểm tra lại</li>
+        </ol>
+    `,
+    
+    'Không Thông Báo Chuyển Động': `
+        <ol>
+            <li>Bật thông báo trong app FPT Camera</li>
+            <li>Cho phép notification trên điện thoại</li>
+            <li>Kiểm tra cài đặt Motion Detection</li>
+            <li>Cấu hình lại độ nhạy cảm biến</li>
+            <li>Kiểm tra lịch thông báo (24/7 hay theo giờ)</li>
+            <li>Test thông báo bằng cách vẫy tay trước camera</li>
+        </ol>
+    `,
+    
+    'Không Phát Tiếng': `
+        <ol>
+            <li>Kiểm tra micro camera có bị che không</li>
+            <li>Bật âm thanh trong app FPT Camera</li>
+            <li>Kiểm tra âm lượng thiết bị xem</li>
+            <li>Cấu hình lại codec âm thanh</li>
+            <li>Kiểm tra băng thông mạng</li>
+            <li>Restart camera và kết nối lại</li>
+        </ol>
     `
 }
 
