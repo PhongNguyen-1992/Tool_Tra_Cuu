@@ -51,15 +51,53 @@
                         <a href="./view/xuli.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
                             Xử Lý Lỗi
                         </a>
-                        <a href="./view/SwapBox.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
-                            CS-Swap
-                        </a>
+                        <!-- Dropdown CS Bán hàng -->
+                        <div class="relative">
+                            <button id="dropdownButton"
+                                class="nav-link flex items-center px-3 py-2 text-sm font-medium text-gray-300">
+                                <span>Bán Hàng</span>
+                                <svg class="ml-1 h-4 w-4 transition-transform duration-200" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div id="dropdownMenu"
+                                class="dropdown-menu absolute right-0 mt-2 w-56 rounded-lg opacity-0 invisible transform scale-95 transition-all duration-200">
+                                <div class="py-2">
+                                    <a href="./view/SwapBox.html"
+                                        class="dropdown-item block px-4 py-3 text-sm text-gray-300">
+                                        <div class="flex items-center">
+                                            <svg class="w-4 h-4 mr-3 text-blue-400" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                            Swap Box
+                                        </div>
+                                    </a>
+                                    <a href="./view/kpdv.html"
+                                        target="_blank" class="dropdown-item block px-4 py-3 text-sm text-gray-300">
+                                        <div class="flex items-center">
+                                            <svg class="w-4 h-4 mr-3 text-green-400" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                                </path>
+                                            </svg>
+                                            PTTB - KPDV
+                                        </div>
+                                    </a>                                  
+                                </div>
+                            </div>
+                        </div>
                         <a href="https://fpt.vn/pay/vi/auth"
                             class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
                             Thanh Toán
                         </a>
-
-                        <!-- Dropdown -->
+                        <!-- Dropdown Thư Viện-->
                         <div class="relative">
                             <button id="dropdownButton"
                                 class="nav-link flex items-center px-3 py-2 text-sm font-medium text-gray-300">
@@ -70,7 +108,6 @@
                                         d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </button>
-
                             <div id="dropdownMenu"
                                 class="dropdown-menu absolute right-0 mt-2 w-56 rounded-lg opacity-0 invisible transform scale-95 transition-all duration-200">
                                 <div class="py-2">
@@ -163,12 +200,15 @@
                     Sự</a>
                 <a href="./view/xuli.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Xử Lý
                     Lỗi</a>
-                <a href="./view/SwapBox.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">
-                    CS-Swap
-                </a>
+                <div class="pt-2">
+                    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 py-2">Bán Hàng</div>
+                    <a href="./view/SwapBox.html" class="nav-link block px-6 py-2 text-sm text-gray-300">CS-Swap</a>
+                    <a href="./view/kpdv.html"
+                        target="_blank" class="nav-link block px-6 py-2 text-sm text-gray-300">PTTB/KPDV</a>
+                </div>
                 <a href="https://fpt.vn/pay/vi/auth"
                     class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Thanh Toán</a>
-
+<!-- Thư Viện -->
                 <div class="pt-2">
                     <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 py-2">Thư Viện</div>
                     <a href="./HDCAMERA.html" class="nav-link block px-6 py-2 text-sm text-gray-300">HDSD FPT Camera</a>
@@ -281,142 +321,7 @@
                 </div>
             </div>
 
-    </section>
-    <!-- KPDV -->
-    <!-- <div class="mt-10 mb-10">
-        <div id="accordion-collapse" data-accordion="collapse" class="wow animate__backInLeft container">
-            <h2 id="accordion-collapse-heading-1">
-                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500
-                   rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 
-                   hover:bg-white hover:text-black transition-colors duration-300 gap-3"
-                    data-accordion-target="#accordion-collapse-body-1" aria-expanded="false"
-                    aria-controls="accordion-collapse-body-1">
-                    <span>Tháng 5 Cần KPDV Bao Nhiêu Cái</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                    <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
-                        <li class="flex items-center">
-                            <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                            </svg>
-                            Tổng Cần KPDV = Slg RM Tháng Trước / Tổng AU
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                            </svg>
-                            Tổng P.KT1 Tháng 5 Cần KPDV 126 HD
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                            </svg>
-                            Mỗi Nhân Sự Trung Bình 2.00 KPDV
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-            <h2 id="accordion-collapse-heading-2">
-                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500
-                   border border-t-1 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 
-                   hover:bg-white hover:text-black transition-colors duration-300 gap-3"
-                    data-accordion-target="#accordion-collapse-body-2" aria-expanded="false"
-                    aria-controls="accordion-collapse-body-2">
-                    <span>Quyền Lợi KPDV Là Gì</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                    <ul class="max-w-md space-y-1 text-white list-inside dark:text-gray-400">
-                        <li class="flex items-center">
-                            <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                            </svg>
-                            Hoa Hồng: COMBO 400.000VND / NET 300.0000 VND
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                            </svg>
-                            HD KPDV Thứ 2 + 200.000VND Vào Lương
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                            </svg>
-                            AU Nhân Sự +1 Duy Trì Qua Các Tháng
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <h2 id="accordion-collapse-heading-3">
-                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500
-                   border border-t-0 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 
-                   hover:bg-white hover:text-black transition-colors duration-300 gap-3"
-                    data-accordion-target="#accordion-collapse-body-3" aria-expanded="false"
-                    aria-controls="accordion-collapse-body-3">
-                    <span>Chính Sách KPDV</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
-                <ul class=" p-5 max-w-md space-y-1 text-white list-inside dark:text-gray-400">
-                    <li class="flex items-center">
-                        <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                        </svg>
-                        Thanh Toán 3T: Miễn Phí Hòa Mạng/ WF6 NEW
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                        </svg>
-                        Trả Sau: 110.000 Phí Hòa Mạng/ WF5 SE
-                    </li>
-
-                </ul>
-                <div
-                    class="p-5 border border-t-0 border-gray-200 dark:border-gray-700 flex justify-center items-center">
-                    <img src="./IMG/chinh_sach_KPDV.jpg" alt="" class="max-w-full h-auto object-contain" />
-                </div>
-
-            </div>
-        </div>
-    </div> -->
-    <!-- SPDV  -->
+    </section>  
     <!-- Tabs -->
     <section class="container mt-20" id="SPDV">
         <!-- Tiêu Đề Tabs -->
@@ -897,6 +802,7 @@
                             </ul>
                         </div>
                     </div>
+                </div>
                 </div>
                 <!-- Aceespoint -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-lg  dark:bg-gray-800"

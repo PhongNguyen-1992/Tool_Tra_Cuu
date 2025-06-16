@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách T4 HCM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .packages-sidebar {
+            width: 300px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 20px;
+        }
+
+        .packages-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .package-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .package-item:hover::before {
+            left: 100%;
+        }
+
+        .package-item:hover {
+            border-color: #007bff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+
+        .package-item.active {
+            border-color: #007bff;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .package-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .package-speed {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .details-panel {
+            flex: 1;
+            padding: 30px;
+            background: white;
+        }
+
+        .details-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-type {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .price-table {
+            background: white;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        .price-row:nth-child(odd) {
+            background: #f8f9fa;
+        }
+
+        .price-label {
+            font-weight: 500;
+        }
+
+        .price-value {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .price-value.highlighted {
+            background: #ffd700;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .equipment-info {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .notes {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .notes h3 {
+            margin-bottom: 10px;
+            color: #d63031;
+        }
+
+        .placeholder {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-top: 100px;
+        }
+
+        .placeholder-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .packages-sidebar {
+                width: 100%;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 CHÍNH SÁCH TP.HCM</h1>
+            <p>Bảng giá dịch vụ Internet - Tháng 6/2025</p>
+            <p>Combo Giải Trí (APP) - Combo MAX (Box)</p>
+        </div>
+
+        <div class="main-content">
+            <div class="packages-sidebar">
+                <div class="packages-title">📦 Chọn Gói Cước</div>
+                
+                <div class="package-item" onclick="selectPackage('giga')">
+                    <div class="package-name">Giga</div>
+                    <div class="package-speed">300 Mbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('sky')">
+                    <div class="package-name">SKY</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('meta')">
+                    <div class="package-name">META</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('giga-f1')">
+                    <div class="package-name">Giga F1</div>
+                    <div class="package-speed">300 Mbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('sky-f1')">
+                    <div class="package-name">SKY F1</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('meta-f1')">
+                    <div class="package-name">META F1</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('f-game')">
+                    <div class="package-name">F Game</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('f-game-f1')">
+                    <div class="package-name">F Game F1</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('giga-f2')">
+                    <div class="package-name">Giga F2</div>
+                    <div class="package-speed">150 Mbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('sky-f2')">
+                    <div class="package-name">SKY F2</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('meta-f2')">
+                    <div class="package-name">META F2</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+
+                <div class="package-item" onclick="selectPackage('f-game-f2')">
+                    <div class="package-name">F Game F2</div>
+                    <div class="package-speed">1 Gbps</div>
+                </div>
+            </div>
+
+            <div class="details-panel">
+                <div id="package-details">
+                    <div class="placeholder">
+                        <div class="placeholder-icon">🎯</div>
+                        <p>Vui lòng chọn gói cước để xem chi tiết giá và thiết bị</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dữ liệu gói cước
+        const packageData = {
+            'giga': {
+                name: 'Giga',
+                speed: '300 Mbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '230,000',
+                        'Ngoại thành': '200,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '240,000',
+                        'Ngoại thành': '210,000'
+                    },
+                    'Combo Max': {
+                        'Nội thành': '250,000',
+                        'Ngoại thành': '230,000'
+                    }
+                },
+                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+            },
+            'sky': {
+                name: 'SKY',
+                speed: '1 Gbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '250,000',
+                        'Ngoại thành': '225,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '260,000',
+                        'Ngoại thành': '240,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '270,000',
+                        'Ngoại thành': '255,000'
+                    }
+                },
+                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+            },
+            'meta': {
+                name: 'META',
+                speed: '1 Gbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '340,000',
+                        'Ngoại thành': '330,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '355,000',
+                        'Ngoại thành': '345,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '370,000',
+                        'Ngoại thành': '360,000'
+                    }
+                },
+                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+            },
+            'giga-f1': {
+                name: 'Giga F1',
+                speed: '300 Mbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6 + 1 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '260,000',
+                        'Ngoại thành': '230,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '270,000',
+                        'Ngoại thành': '245,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '280,000',
+                        'Ngoại thành': '260,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'sky-f1': {
+                name: 'SKY F1',
+                speed: '1 Gbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6 + 1 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '280,000',
+                        'Ngoại thành': '255,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '290,000',
+                        'Ngoại thành': '265,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '300,000',
+                        'Ngoại thành': '275,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'meta-f1': {
+                name: 'META F1',
+                speed: '1 Gbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6 + 1 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '370,000',
+                        'Ngoại thành': '360,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '385,000',
+                        'Ngoại thành': '375,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '400,000',
+                        'Ngoại thành': '390,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'f-game': {
+                name: 'F Game',
+                speed: '1 Gbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '290,000',
+                        'Ngoại thành': '265,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '300,000',
+                        'Ngoại thành': '280,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '310,000',
+                        'Ngoại thành': '295,000'
+                    }
+                },
+                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+            },
+            'f-game-f1': {
+                name: 'F Game F1',
+                speed: '1 Gbps',
+                pmh: '299,000',
+                equipment: '1 ONT Wifi 6 + 1 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '320,000',
+                        'Ngoại thành': '295,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '330,000',
+                        'Ngoại thành': '305,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '340,000',
+                        'Ngoại thành': '315,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'giga-f2': {
+                name: 'Giga F2',
+                speed: '150 Mbps',
+                pmh: '399,000',
+                equipment: '1 ONT Wifi 6 + 2 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '290,000',
+                        'Ngoại thành': '260,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '300,000',
+                        'Ngoại thành': '275,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '310,000',
+                        'Ngoại thành': '290,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'sky-f2': {
+                name: 'SKY F2',
+                speed: '1 Gbps',
+                pmh: '399,000',
+                equipment: '1 ONT Wifi 6 + 2 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '310,000',
+                        'Ngoại thành': '285,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '320,000',
+                        'Ngoại thành': '295,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '330,000',
+                        'Ngoại thành': '305,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'meta-f2': {
+                name: 'META F2',
+                speed: '1 Gbps',
+                pmh: '399,000',
+                equipment: '1 ONT Wifi 6 + 2 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '400,000',
+                        'Ngoại thành': '390,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '415,000',
+                        'Ngoại thành': '405,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '430,000',
+                        'Ngoại thành': '420,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            },
+            'f-game-f2': {
+                name: 'F Game F2',
+                speed: '1 Gbps',
+                pmh: '399,000',
+                equipment: '1 ONT Wifi 6 + 2 AP Wifi 6',
+                services: {
+                    'Internet Only': {
+                        'Nội thành': '350,000',
+                        'Ngoại thành': '325,000'
+                    },
+                    'Combo Giải trí': {
+                        'Nội thành': '360,000',
+                        'Ngoại thành': '335,000',
+                        highlighted: true
+                    },
+                    'Combo Max': {
+                        'Nội thành': '370,000',
+                        'Ngoại thành': '345,000'
+                    }
+                },
+                note: 'Chỉ bán 6T, 12T'
+            }
+        };
+
+        function selectPackage(packageId) {
+            // Remove active class from all packages
+            document.querySelectorAll('.package-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to selected package
+            event.target.closest('.package-item').classList.add('active');
+            
+            // Display package details
+            displayPackageDetails(packageId);
+        }
+
+        function displayPackageDetails(packageId) {
+            const package = packageData[packageId];
+            const detailsContainer = document.getElementById('package-details');
+            
+            let servicesHtml = '';
+            Object.keys(package.services).forEach(serviceType => {
+                const service = package.services[serviceType];
+                let priceRowsHtml = '';
+                
+                Object.keys(service).forEach(region => {
+                    if (region !== 'highlighted') {
+                        const isHighlighted = service.highlighted && serviceType === 'Combo Giải trí';
+                        priceRowsHtml += `
+                            <div class="price-row">
+                                <span class="price-label">${region}:</span>
+                                <span class="price-value ${isHighlighted ? 'highlighted' : ''}">${service[region]}đ</span>
+                            </div>
+                        `;
+                    }
+                });
+                
+                servicesHtml += `
+                    <div class="service-card">
+                        <div class="service-type">${serviceType}</div>
+                        <div class="price-table">
+                            ${priceRowsHtml}
+                        </div>
+                        <div class="equipment-info">
+                            <strong>📦 Thiết bị:</strong> ${package.equipment}<br>
+                            <strong>💰 PMH:</strong> ${package.pmh}đ
+                        </div>
+                    </div>
+                `;
+            });
+            
+            detailsContainer.innerHTML = `
+                <div class="details-title">📊 ${package.name} - ${package.speed}</div>
+                <div class="services-grid">
+                    ${servicesHtml}
+                </div>
+                <div class="notes">
+                    <h3>📝 Lưu ý:</h3>
+                    <p>${package.note}</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
