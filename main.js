@@ -1,35 +1,3 @@
-const LOGIN_API = 'https://684981f845f4c0f5ee71c0a8.mockapi.io/DangKySG01';
-
-  document.getElementById('loginForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const username = document.getElementById('loginUsername').value;
-    const password = document.getElementById('loginPassword').value;
-
-    try {
-      const res = await fetch(LOGIN_API);
-      const users = await res.json();
-
-      const user = users.find(u => u.username === username && u.password === password);
-
-      if (!user) {
-        document.getElementById('loginMessage').textContent = "Tài khoản hoặc mật khẩu không đúng.";
-      } else if (!user.approved) {
-        document.getElementById('loginMessage').textContent = "Tài khoản chưa được duyệt.";
-      } else {
-        // Đăng nhập thành công
-        window.location.href = "index.html"; // Chuyển đến trang chính
-      }
-    } catch (err) {
-      alert("Lỗi khi đăng nhập: " + err.message);
-    }
-  });
-    function logout() {
-      document.getElementById('loginModal').classList.remove('hidden');
-      document.getElementById('mainContent').classList.add('hidden');
-  
-
-    }
-
 document.addEventListener('DOMContentLoaded', function () {
     // Fade-in on scroll
     const observerOptions = {

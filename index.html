@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Đăng nhập</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Rồng Phượng</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="./SRC/Login/Dang_Nhap/style.css">
 </head>
-<body class="bg-gradient-to-r from-blue-100 to-indigo-200 min-h-screen flex items-center justify-center">
-
-  <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-    <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">Đăng nhập hệ thống</h2>
+<body>
+    <div class="bg-animation"></div>
     
-    <form id="loginForm" class="space-y-4">
-      <div>
-        <label for="loginUsername" class="block mb-1 text-sm font-medium text-gray-700">Tên đăng nhập</label>
-        <input type="text" id="loginUsername" placeholder="Nhập tên đăng nhập"
-          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-      </div>
-      <div>
-        <label for="loginPassword" class="block mb-1 text-sm font-medium text-gray-700">Mật khẩu</label>
-        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu"
-          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-      </div>
-      <div>
-        <button type="submit"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition duration-200">Đăng nhập</button>
-      </div>
-    </form>
+    <!-- Floating Particles -->
+    <div class="floating-particles"></div>
+    
+    <!-- Dragons and Phoenix -->
+    <div class="dragon" style="animation-delay: 0s;"></div>
+    <div class="dragon" style="animation-delay: 4s; animation-duration: 10s;"></div>
+    <div class="phoenix" style="animation-delay: 2s;"></div>
+    <div class="phoenix" style="animation-delay: 6s; animation-duration: 18s;"></div>
+    
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <h1>🐉 Sài Gòn 01 🦅</h1>
+                <p>Chào mừng bạn trở lại</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="loginUsername" placeholder="Nhập tên đăng nhập" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Nhập mật khẩu" required>
+                        <span class="password-toggle" onclick="togglePassword()">
+                            <i class="fas fa-eye" id="toggleIcon"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt me-2"></i>
+                    Đăng nhập
+                </button>
+            </form>
+            
+            <div class="links">
+                <a href="#" onclick="showMessage('Chức năng đổi mật khẩu')">
+                    <i class="fas fa-key me-1"></i>
+                    Đổi mật khẩu
+                </a>
+                <a href="./SRC/Login/Dang_Ky/index.html" onclick="showMessage('Chức năng đăng ký')">
+                    <i class="fas fa-user-plus me-1"></i>
+                    Đăng ký
+                </a>
+                <p id="loginMessage"></p>
+            </div>
+        </div>
+    </div>
 
-    <div id="loginMessage" class="mt-4 text-center text-sm text-red-500"></div>
-
-    <p class="text-center mt-6 text-sm text-gray-600">
-      Chưa có tài khoản? 
-      <a href="./SRC/Login/Dang_Ky/index.html" class="text-indigo-600 hover:underline">Đăng ký tại đây</a>
-    </p>
-  </div>
-
-  <script src="./SRC/Login/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./SRC/Login/Dang_Nhap/hieuung.js"></script>
+    <script src="./SRC/Login/Dang_Nhap/main.js"></script>
 </body>
 </html>
