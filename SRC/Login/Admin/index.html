@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản trị duyệt tài khoản</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="./main.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+  <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">Danh sách tài khoản chờ duyệt</h2>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Tên đăng nhập</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Người đăng ký</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Mail</th>
+            <th class="px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody" class="bg-white divide-y divide-gray-200">
+          <!-- Dữ liệu sẽ được render ở đây -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
