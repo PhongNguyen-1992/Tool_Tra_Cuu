@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPT Swap Box Interface</title>
+    <link rel="stylesheet" href="../SwapBox/style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📦 FPT SWAP BOX V1, V2</h1>
+            <p>Hệ thống quản lý đổi thiết bị thông minh</p>
+        </div>
+
+        <div class="content">
+            <button class="btn-main" onclick="toggleTable()">
+                <span class="icon">📋</span>Chính Sách Swap
+            </button>
+
+            <div class="table-container" id="tableContainer">
+                <table class="swap-table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Loại Box Swap</th>
+                            <th>Phí khách trả</th>
+                            <th>Thiết bị Box</th>
+                            <th>Hoa hồng tư vấn PNC</th>
+                            <th>Công lắp đặt PNC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td><strong>Box 1</strong></td>
+                            <td class="price">110.000đ</td>
+                            <td>650 new</td>
+                            <td class="price gray">25.000đ</td>
+                            <td class="price gray">70.000đ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td><strong>Box 2</strong></td>
+                            <td class="price">330.000đ</td>
+                            <td>650 new</td>
+                            <td class="price gray">20.000đ</td>
+                            <td class="price gray">70.000đ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td><strong>Box 3</strong></td>
+                            <td class="price">330.000đ</td>
+                            <td>650 new</td>
+                            <td class="price gray">20.000đ</td>
+                            <td class="price gray">70.000đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="guide-section" id="guideSection">
+                    <div style="text-align: center; margin: 20px 0;">
+                        <button class="btn-guide" onclick="showGuide()">
+                            <span class="icon">📖</span>Hướng Dẫn Active
+                        </button>
+                    </div>
+
+                    <div class="guide-content" id="guideContent">
+                        <div class="guide-step">
+                            <h3>🔐 BƯỚC 1: TÀI KHOẢN</h3>
+                            <p><strong>Khách hàng chưa liên kết tài khoản:</strong> Phải liên kết tài khoản trên Box V1, V2 với <span class="highlight">số điện thoại của khách hàng</span>.</p>
+                            <p><strong>Khách hàng đã liên kết tài khoản:</strong> Cần kiểm tra xem số điện thoại có còn sử dụng hay không. Nếu không, phải thay số điện thoại khác thông tin đến DVKH CN.</p>
+                        </div>
+
+                        <div class="guide-step">
+                            <h3>📱 BƯỚC 2: THIẾT BỊ</h3>
+                            <p>Cần Replace MAC Box trên MobiX <span class="highlight">Box 650</span> để hệ thống ghi nhận MAC Box mới thay cho Box V1, V2.</p>
+                            <p><strong>Lưu ý:</strong> Nếu không thay thế, hệ thống vẫn ghi nhận khách hàng sử dụng Box V1, V2 <span class="highlight"> và không tính lương</span>.</p>
+                        </div>
+
+                        <div class="guide-step">
+                            <h3>⚙️ CÁC THAO TÁC QUAN TRỌNG</h3>
+                            <p>• <strong>Tình Trạng Khách Hàng:</strong> Kiểm tra trạng thái hợp đồng <span class="highlight"> Bình Thường/ Không Khóa Vì Lý Do Thanh Toán</span></p>
+                            <p>• <strong>Các Lần Kết Nối:</strong> Xem lịch sử kết nối thiết bị <span class="highlight">(MAC KHG giao giống MobiX ghi nhận, Các lần kết nối Internet, Bấm lại RJ45,..)</span></p>
+                            <p>• <strong>Reset Mac:</strong> <span class="highlight">Bắt Buộc</span> Replace Mac Box</p>
+                            <p>• <strong>Thông Tin IPTV:</strong> Số điện thoại active FPT Play phải là SDT KHG đang sử dụng và chưa tồn tại trên hợp đồng nào</p>
+                        </div>
+
+                        <button class="close-btn" onclick="hideGuide()">Đóng hướng dẫn</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="../SwapBox/main.js"></script>
+</body>
+</html>

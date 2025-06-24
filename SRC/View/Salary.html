@@ -1,98 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tính Lương</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #0f1419 0%, #1a202c 50%, #2d3748 100%);
-            min-height: 100vh;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
-        }
-        
-        .input-glow:focus {
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
-        }
-        
-        .btn-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-gradient:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-        
-        .checkbox-custom {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .checkbox-custom:checked {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: #667eea;
-        }
-        
-        .floating-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-animation:nth-child(2) {
-            animation-delay: -2s;
-        }
-        
-        .floating-animation:nth-child(3) {
-            animation-delay: -4s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .result-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.2); }
-            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.4); }
-        }
-        
-        .select-dark {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-        
-        .select-dark option {
-            background: #1a202c;
-            color: white;
-        }
-    </style>
+    <title>Tính Lương Nhanh - Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>    
+    <link rel="stylesheet" href="../Salary/style.css">
 </head>
-
 <body class="text-white overflow-x-hidden">
     <!-- Background decorative elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
@@ -184,10 +98,10 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="glass-card p-4 rounded-xl">
                                 <div class="flex items-center space-x-3">
-                                    <input id="check_1" type="checkbox" value="1000000" 
+                                    <input id="check_1" type="checkbox" value="700000" 
                                         class="checkbox-custom w-5 h-5 rounded focus:ring-2 focus:ring-blue-500" />
                                     <label for="check_1" class="text-gray-300 font-medium cursor-pointer">
-                                        🏆 Đạt KPIs
+                                        🏆 CSAT >4.8
                                     </label>
                                 </div>
                             </div>
@@ -217,7 +131,7 @@
                 <div id="result-section" class="result-card rounded-3xl p-8 text-center hidden">
                     <h3 class="text-2xl font-bold mb-4 gradient-text">🎉 Kết Quả Tính Lương</h3>
                     <div id="salary-result" class="text-4xl font-bold text-green-400 mb-4"></div>
-                    <div id="salary-breakdown" class="text-gray-300 space-y-2"></div>
+                    <div id="salaryBreakdown" class="text-gray-300 space-y-2"></div>
                 </div>
 
                 <!-- Notes Section -->
@@ -246,81 +160,24 @@
                             </div>
                             <p class="text-gray-300">Kết quả tính toán chỉ mang tính chất <span class="font-bold text-yellow-400">tham khảo</span></p>
                         </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-white text-sm font-bold">💼</span>
+                            </div>
+                            <p class="text-gray-300">Bảo hiểm: <span class="font-bold text-red-400">10.5%</span> lương cơ bản 5.250.000 VND</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-white text-sm font-bold">🏛️</span>
+                            </div>
+                            <p class="text-gray-300">Thuế TNCN: Áp dụng khi <span class="font-bold text-purple-400">thu nhập > 11 triệu</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Salary calculation logic
-        document.getElementById('salaryForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const htTk = parseFloat(document.getElementById('HT_TK').value) || 0;
-            const htSwap = parseFloat(document.getElementById('HT_Swap').value) || 0;
-            const au = parseFloat(document.getElementById('AU').value) || 0;
-            const heSo = parseFloat(document.getElementById('He_So').value) || 1;
-            const bacNghe = parseFloat(document.getElementById('Bac_Nghe').value) || 0;
-            const kpiBonus = document.getElementById('check_1').checked ? 1000000 : 0;
-            const kpdvBonus = document.getElementById('check_2').checked ? 800000 : 0;
-            
-            // Calculate salary components
-            const deploymentSalary = htTk * 100000; // 100k per deployment
-            const swapSalary = htSwap * 60000; // Assuming 50k per swap
-            const activeSalary = au * 4700; // Assuming 30k per active ownership
-            const levelBonus = bacNghe;
-            const bonuses = kpiBonus + kpdvBonus;
-            
-            // Calculate total
-            const baseSalary = (deploymentSalary + swapSalary + activeSalary) * heSo;
-            const totalSalary = baseSalary + levelBonus + bonuses;
-            
-            // Display result
-            const resultSection = document.getElementById('result-section');
-            const salaryResult = document.getElementById('salary-result');
-            const salaryBreakdown = document.getElementById('salary-breakdown');
-            
-            salaryResult.textContent = new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(totalSalary);
-            
-            salaryBreakdown.innerHTML = `
-                <div>💼 Lương TK-BT: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(baseSalary)}</div>
-                <div>🎯 Lương bậc nghề: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(levelBonus)}</div>
-                <div>🏆 Thưởng KPI/KPDV: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(bonuses)}</div>
-                <div class="pt-2 border-t border-gray-600 mt-2 font-bold">
-                    💰 Tổng lương: ${new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(totalSalary)}
-                </div>
-            `;
-            
-            resultSection.classList.remove('hidden');
-            resultSection.scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Add input animations
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('scale-105');
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.classList.remove('scale-105');
-            });
-        });
-
-        // Add select animations
-        document.querySelectorAll('select').forEach(select => {
-            select.addEventListener('change', function() {
-                this.classList.add('animate-pulse');
-                setTimeout(() => {
-                    this.classList.remove('animate-pulse');
-                }, 300);
-            });
-        });
-    </script>
+    <script src="../Salary/main.js"></script>
 </body>
-
 </html>

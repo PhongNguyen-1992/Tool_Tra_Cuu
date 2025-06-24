@@ -42,13 +42,13 @@
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="" class="nav-link active block px-3 py-2 text-base font-medium text-blue-400">Trang
                             Chủ</a>
-                        <a href="./view/Salary.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
+                        <a href="./SRC/View/Salary.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
                             Tính Lương
                         </a>
                         <a href="./view/nhanvien.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
                             Nhân Sự
                         </a>
-                        <a href="./view/xuli.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
+                        <a href="./SRC/View/Tool_Xu_Li.html" class="nav-link px-3 py-2 text-sm font-medium text-gray-300">
                             Xử Lý Lỗi
                         </a>
                         <!-- Dropdown Bán Hàng -->
@@ -66,13 +66,13 @@
                             <div id="salesDropdownMenu"
                                 class="dropdown-menu absolute right-0 mt-2 w-56 rounded-lg opacity-0 invisible transform scale-95 transition-all duration-200">
                                 <div class="py-2">
-                                    <a href="./view/SwapBox.html"
+                                    <a href="./SRC/View/Swap_Box.html"
                                         class="dropdown-item block px-4 py-3 text-sm text-gray-300">
                                         <div class="flex items-center">                                            
                                            📺 Swap Box
                                         </div>
                                     </a>
-                                    <a href="./view/PTTB.html"
+                                    <a href="./SRC/View/PTTB.html"
                                         class="dropdown-item block px-4 py-3 text-sm text-gray-300">
                                         <div class="flex items-center">
                                             <svg class="w-4 h-4 mr-3 text-green-400" fill="none" stroke="currentColor"
@@ -84,7 +84,7 @@
                                             PTTB
                                         </div>
                                     </a>
-                                    <a href="./view/khoiphuc.html" 
+                                    <a href="./SRC/View/KPDV.html" 
                                         class="dropdown-item block px-4 py-3 text-sm text-gray-300">
                                         <div class="flex items-center">
                                             <svg class="w-4 h-4 mr-3 text-green-400" fill="none" stroke="currentColor"
@@ -200,18 +200,18 @@
         <div id="mobileMenu" class="mobile-menu md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="" class="nav-link active block px-3 py-2 text-base font-medium text-blue-400">Trang Chủ</a>
-                <a href="./view/Salary.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Tính
+                <a href="./SRC/View/Salary.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Tính
                     Lương</a>
                 <a href="./view/nhanvien.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Nhân
                     Sự</a>
-                <a href="./view/xuli.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Xử Lý
+                <a href="./SRC/View/Tool_Xu_Li.html" class="nav-link block px-3 py-2 text-base font-medium text-gray-300">Xử Lý
                     Lỗi</a>
                 <div class="pt-2">
                     <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 py-2">Bán Hàng</div>
-                    <a href="./view/SwapBox.html" class="nav-link block px-6 py-2 text-sm text-gray-300">CS-Swap</a>
-                    <a href="./view/PTTB.html" 
+                    <a href="./SRC/View/Swap_Box.html" class="nav-link block px-6 py-2 text-sm text-gray-300">CS-Swap</a>
+                    <a href="./SRC/View/PTTB.html" 
                         class="nav-link block px-6 py-2 text-sm text-gray-300">PTTB</a>
-                        <a href="./view/khoiphuc.html"
+                        <a href="./SRC/View/KPDV.html"
                         class="nav-link block px-6 py-2 text-sm text-gray-300">KPDV</a>
                 </div>
                 <a href="https://fpt.vn/pay/vi/auth"
@@ -2058,150 +2058,15 @@
         <span onclick="closeModal()" class="absolute top-4 right-6 text-white text-3xl cursor-pointer">&times;</span>
         <!-- Ảnh lớn -->
         <img id="modalImage" class="max-w-full max-h-full rounded-lg shadow-2xl" src="" alt="Zoomed Image" />
-    </div>
-    <script src="./js/xuli.js"></script>
-    <script src="./"></script>
+    </div>   
+    <script src="./main.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="./LB/WOW.JS/dist/wow.min.js"></script>
     <script>
         new WOW().init();
     </script>
-    <script>
-        function openModal(src) {
-            const modal = document.getElementById("imgModal");
-            const modalImg = document.getElementById("modalImage");
-            modalImg.src = src;
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
-        }
-
-        function closeModal(e = null) {
-            // Nếu có sự kiện và click vào ảnh thì không đóng
-            if (e && e.target.id !== "imgModal" && e.target.id !== "closeButton") return;
-
-            const modal = document.getElementById("imgModal");
-            modal.classList.add("hidden");
-            modal.classList.remove("flex");
-            const modalImg = document.getElementById("modalImage");
-            modalImg.src = "";
-        }
-        document.getElementById("imgModal").addEventListener("click", closeModal);
-    </script>
-    <!-- Ontotop -->
-    <button onclick="topFunction()" id="myBtn" title="Go to top"
-        class="hidden fixed bottom-6 right-6 z-50 bg-gray-400 text-white text-xl p-3 rounded-md shadow hover:bg-gray-500 transition duration-300">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let mybutton = document.getElementById("myBtn");
-
-            window.onscroll = function () {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    mybutton.style.display = "block";
-                } else {
-                    mybutton.style.display = "none";
-                }
-            };
-
-            window.topFunction = function () {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            };
-        });
-    </script>
-
-    <!-- Script NAV -->
-    <script>
-        // Dropdown functionality for Sales (Bán Hàng)
-        const salesButton = document.getElementById('salesDropdownButton');
-        const salesMenu = document.getElementById('salesDropdownMenu');
-        const salesArrow = salesButton.querySelector('svg');
-
-        // Dropdown functionality for Library (Thư Viện)
-        const libraryButton = document.getElementById('libraryDropdownButton');
-        const libraryMenu = document.getElementById('libraryDropdownMenu');
-        const libraryArrow = libraryButton.querySelector('svg');
-
-        // Function to close all dropdowns
-        function closeAllDropdowns() {
-            salesMenu.classList.add('opacity-0', 'invisible', 'scale-95');
-            salesMenu.classList.remove('opacity-100', 'visible', 'scale-100');
-            salesArrow.style.transform = 'rotate(0deg)';
-
-            libraryMenu.classList.add('opacity-0', 'invisible', 'scale-95');
-            libraryMenu.classList.remove('opacity-100', 'visible', 'scale-100');
-            libraryArrow.style.transform = 'rotate(0deg)';
-        }
-
-        // Sales dropdown
-        salesButton.addEventListener('click', function (e) {
-            e.stopPropagation();
-
-            // Close library dropdown if open
-            libraryMenu.classList.add('opacity-0', 'invisible', 'scale-95');
-            libraryMenu.classList.remove('opacity-100', 'visible', 'scale-100');
-            libraryArrow.style.transform = 'rotate(0deg)';
-
-            // Toggle sales dropdown
-            if (salesMenu.classList.contains('opacity-0')) {
-                salesMenu.classList.remove('opacity-0', 'invisible', 'scale-95');
-                salesMenu.classList.add('opacity-100', 'visible', 'scale-100');
-                salesArrow.style.transform = 'rotate(180deg)';
-            } else {
-                salesMenu.classList.add('opacity-0', 'invisible', 'scale-95');
-                salesMenu.classList.remove('opacity-100', 'visible', 'scale-100');
-                salesArrow.style.transform = 'rotate(0deg)';
-            }
-        });
-
-        // Library dropdown
-        libraryButton.addEventListener('click', function (e) {
-            e.stopPropagation();
-
-            // Close sales dropdown if open
-            salesMenu.classList.add('opacity-0', 'invisible', 'scale-95');
-            salesMenu.classList.remove('opacity-100', 'visible', 'scale-100');
-            salesArrow.style.transform = 'rotate(0deg)';
-
-            // Toggle library dropdown
-            if (libraryMenu.classList.contains('opacity-0')) {
-                libraryMenu.classList.remove('opacity-0', 'invisible', 'scale-95');
-                libraryMenu.classList.add('opacity-100', 'visible', 'scale-100');
-                libraryArrow.style.transform = 'rotate(180deg)';
-            } else {
-                libraryMenu.classList.add('opacity-0', 'invisible', 'scale-95');
-                libraryMenu.classList.remove('opacity-100', 'visible', 'scale-100');
-                libraryArrow.style.transform = 'rotate(0deg)';
-            }
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function () {
-            closeAllDropdowns();
-        });
-
-        // Prevent dropdown menus from closing when clicking inside them
-        salesMenu.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-
-        libraryMenu.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-
-        // Mobile menu functionality
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const hamburgerIcon = document.getElementById('hamburgerIcon');
-        const closeIcon = document.getElementById('closeIcon');
-
-        mobileMenuButton.addEventListener('click', function () {
-            mobileMenu.classList.toggle('hidden');
-            hamburgerIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-    </script>
+    <script src="dropdown.js"></script>
+ 
 
 </body>
 
