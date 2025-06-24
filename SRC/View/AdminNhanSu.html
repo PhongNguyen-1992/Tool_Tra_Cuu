@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Quản lý Nhân viên</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-96 transform transition-all">
+            <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Đăng nhập Admin</h2>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Tên đăng nhập</label>
+                    <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Mật khẩu</label>
+                    <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                    Đăng nhập
+                </button>
+            </form>
+            <p class="text-sm text-gray-600 mt-4 text-center">Demo: admin/admin123</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <!-- Header -->
+        <header class="bg-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <h1 class="text-3xl font-bold text-gray-900">
+                        <i class="fas fa-users-cog mr-3 text-blue-600"></i>
+                        Admin - Quản lý Nhân viên
+                    </h1>
+                    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Đăng xuất
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Search and Actions -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex flex-wrap gap-4 mb-4">
+                    <div class="flex-1 min-w-64">
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên, MSNV, block..." 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <button onclick="searchEmployees()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                        <i class="fas fa-search mr-2"></i>Tìm kiếm
+                    </button>
+                    <button onclick="showAllEmployees()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-200">
+                        <i class="fas fa-list mr-2"></i>Hiển thị tất cả
+                    </button>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="openAddModal()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
+                        <i class="fas fa-plus mr-2"></i>Thêm nhân viên
+                    </button>
+                    <label for="excelFile" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition duration-200 cursor-pointer">
+                        <i class="fas fa-file-excel mr-2"></i>Import Excel
+                        <input type="file" id="excelFile" accept=".xlsx,.xls" class="hidden" onchange="importExcel()">
+                    </label>
+                    <button onclick="exportTemplate()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-200">
+                        <i class="fas fa-download mr-2"></i>Tải mẫu Excel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Employee Table -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MSNV</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Họ và tên</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phòng ban</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Block</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SĐT</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày vào</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thâm niên</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">HDLD</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeeTableBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Employee Modal -->
+    <div id="employeeModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-2xl max-h-screen overflow-y-auto">
+            <h2 id="modalTitle" class="text-2xl font-bold mb-6 text-gray-800">Thêm nhân viên</h2>
+            <form id="employeeForm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">MSNV *</label>
+                        <input type="text" id="msnv" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Họ và tên *</label>
+                        <input type="text" id="hoVaTen" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Phòng ban</label>
+                        <input type="text" id="phongBan" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Block</label>
+                        <input type="text" id="block" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">SĐT</label>
+                        <input type="text" id="sdt" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Ngày vào công ty *</label>
+                        <input type="date" id="ngayVao" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required onchange="calculateSeniority()">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Thâm niên (tự động tính)</label>
+                        <input type="text" id="thamNien" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">HDLD (tự động tính)</label>
+                        <input type="text" id="hdld" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">MBX</label>
+                        <input type="text" id="mbx" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="mail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Thâm niên</label>
+                        <input type="text" id="thamNien" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">CBQL</label>
+                        <input type="text" id="cbql" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Mã nhân viên</label>
+                        <input type="text" id="maNhanVien" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <div class="flex justify-end space-x-4 mt-6">
+                    <button type="button" onclick="closeEmployeeModal()" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition duration-200">
+                        Hủy
+                    </button>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                        Lưu
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://683dacda199a0039e9e66ead.mockapi.io/api/HRSG01';
+        let employees = [];
+        let currentEditId = null;
+
+        // Login functionality
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'admin123') {
+                document.getElementById('loginModal').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                loadEmployees();
+            } else {
+                alert('Sai tên đăng nhập hoặc mật khẩu!');
+            }
+        });
+
+        function logout() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Load employees from API
+        async function loadEmployees() {
+            try {
+                const response = await fetch(API_URL);
+                employees = await response.json();
+                displayEmployees(employees);
+            } catch (error) {
+                console.error('Error loading employees:', error);
+                alert('Lỗi khi tải dữ liệu nhân viên!');
+            }
+        }
+
+        // Display employees in table
+        function displayEmployees(data) {
+            const tbody = document.getElementById('employeeTableBody');
+            tbody.innerHTML = '';
+            
+            data.forEach(emp => {
+                // Calculate seniority and HDLD if ngayVao exists
+                let thamNienText = emp.ThamNien || '';
+                let hdldText = emp.HDLD || '';
+                
+                if (emp.NgayVao) {
+                    const seniority = calculateSeniorityFromDate(emp.NgayVao);
+                    thamNienText = seniority.text;
+                    hdldText = seniority.hdld;
+                }
+                
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${emp.MSNV || ''}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${emp.HoVaTen || ''}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${emp.PhongBan || ''}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${emp.Block || ''}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${emp.SDT || ''}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${emp.NgayVao ? formatDate(emp.NgayVao) : ''}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${thamNienText}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getHDLDColor(hdldText)}">${hdldText}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="editEmployee('${emp.id}')" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                            <i class="fas fa-edit"></i> Sửa
+                        </button>
+                        <button onclick="deleteEmployee('${emp.id}')" class="text-red-600 hover:text-red-900">
+                            <i class="fas fa-trash"></i> Xóa
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Search employees
+        function searchEmployees() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = employees.filter(emp => 
+                (emp.HoVaTen && emp.HoVaTen.toLowerCase().includes(searchTerm)) ||
+                (emp.MSNV && emp.MSNV.toLowerCase().includes(searchTerm)) ||
+                (emp.Block && emp.Block.toLowerCase().includes(searchTerm)) ||
+                (emp.PhongBan && emp.PhongBan.toLowerCase().includes(searchTerm))
+            );
+            displayEmployees(filtered);
+        }
+
+        function showAllEmployees() {
+            document.getElementById('searchInput').value = '';
+            displayEmployees(employees);
+        }
+
+        // Modal functions
+        function openAddModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'Thêm nhân viên';
+            document.getElementById('employeeForm').reset();
+            document.getElementById('employeeModal').classList.remove('hidden');
+        }
+
+        function closeEmployeeModal() {
+            document.getElementById('employeeModal').classList.add('hidden');
+        }
+
+        function editEmployee(id) {
+            const employee = employees.find(emp => emp.id === id);
+            if (employee) {
+                currentEditId = id;
+                document.getElementById('modalTitle').textContent = 'Sửa thông tin nhân viên';
+                
+                document.getElementById('msnv').value = employee.MSNV || '';
+                document.getElementById('hoVaTen').value = employee.HoVaTen || '';
+                document.getElementById('phongBan').value = employee.PhongBan || '';
+                document.getElementById('block').value = employee.Block || '';
+                document.getElementById('sdt').value = employee.SDT || '';
+                document.getElementById('ngayVao').value = employee.NgayVao || '';
+                document.getElementById('mbx').value = employee.MBX || '';
+                document.getElementById('mail').value = employee.Mail || '';
+                document.getElementById('cbql').value = employee.CBQL || '';
+                document.getElementById('maNhanVien').value = employee.maNhanVien || '';
+                
+                // Calculate seniority and HDLD if date exists
+                if (employee.NgayVao) {
+                    calculateSeniority();
+                } else {
+                    document.getElementById('thamNien').value = employee.ThamNien || '';
+                    document.getElementById('hdld').value = employee.HDLD || '';
+                }
+                
+                document.getElementById('employeeModal').classList.remove('hidden');
+            }
+        }
+
+        // Employee form submission
+        document.getElementById('employeeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const ngayVao = document.getElementById('ngayVao').value;
+            const seniority = ngayVao ? calculateSeniorityFromDate(ngayVao) : { text: '', hdld: '' };
+            
+            const employeeData = {
+                MSNV: document.getElementById('msnv').value,
+                HoVaTen: document.getElementById('hoVaTen').value,
+                PhongBan: document.getElementById('phongBan').value,
+                Block: document.getElementById('block').value,
+                SDT: document.getElementById('sdt').value,
+                NgayVao: ngayVao,
+                ThamNien: seniority.text,
+                HDLD: seniority.hdld,
+                MBX: document.getElementById('mbx').value,
+                Mail: document.getElementById('mail').value,
+                CBQL: document.getElementById('cbql').value,
+                maNhanVien: document.getElementById('maNhanVien').value || Math.floor(Math.random() * 1000) + 1
+            };
+
+            try {
+                let response;
+                if (currentEditId) {
+                    response = await fetch(`${API_URL}/${currentEditId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(employeeData)
+                    });
+                } else {
+                    response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(employeeData)
+                    });
+                }
+
+                if (response.ok) {
+                    alert(currentEditId ? 'Cập nhật thành công!' : 'Thêm nhân viên thành công!');
+                    closeEmployeeModal();
+                    loadEmployees();
+                } else {
+                    throw new Error('API Error');
+                }
+            } catch (error) {
+                console.error('Error saving employee:', error);
+                alert('Lỗi khi lưu dữ liệu!');
+            }
+        });
+
+        // Delete employee
+        async function deleteEmployee(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa nhân viên này?')) {
+                try {
+                    const response = await fetch(`${API_URL}/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Xóa thành công!');
+                        loadEmployees();
+                    } else {
+                        throw new Error('API Error');
+                    }
+                } catch (error) {
+                    console.error('Error deleting employee:', error);
+                    alert('Lỗi khi xóa nhân viên!');
+                }
+            }
+        }
+
+        // Excel functions
+        function exportTemplate() {
+            const template = [
+                {
+                    'MSNV': '00350511',
+                    'HoVaTen': 'Nguyễn Văn A',
+                    'PhongBan': 'PUSER1',
+                    'Block': 'Q9-001',
+                    'SDT': '0392806225',
+                    'NgayVao': '2024-01-15',
+                    'MBX': 'pnc01.example',
+                    'Mail': 'example@fpt.net',
+                    'CBQL': 'NPH',
+                    'maNhanVien': '123'
+                }
+            ];
+
+            const ws = XLSX.utils.json_to_sheet(template);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'NhanVien');
+            XLSX.writeFile(wb, 'mau_import_nhanvien.xlsx');
+        }
+
+        function importExcel() {
+            const file = document.getElementById('excelFile').files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, {type: 'array'});
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                    if (jsonData.length === 0) {
+                        alert('File Excel trống!');
+                        return;
+                    }
+
+                    // Import each employee
+                    importEmployeesFromExcel(jsonData);
+                } catch (error) {
+                    console.error('Error reading Excel file:', error);
+                    alert('Lỗi khi đọc file Excel!');
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        async function importEmployeesFromExcel(data) {
+            let successCount = 0;
+            let errorCount = 0;
+
+            for (const row of data) {
+                try {
+                    const ngayVao = row.NgayVao || '';
+                    const seniority = ngayVao ? calculateSeniorityFromDate(ngayVao) : { text: '', hdld: '' };
+                    
+                    const employeeData = {
+                        MSNV: row.MSNV || '',
+                        HoVaTen: row.HoVaTen || '',
+                        PhongBan: row.PhongBan || '',
+                        Block: row.Block || '',
+                        SDT: row.SDT || '',
+                        NgayVao: ngayVao,
+                        ThamNien: seniority.text,
+                        HDLD: seniority.hdld,
+                        MBX: row.MBX || '',
+                        Mail: row.Mail || '',
+                        CBQL: row.CBQL || '',
+                        maNhanVien: row.maNhanVien || Math.floor(Math.random() * 1000) + 1
+                    };
+
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(employeeData)
+                    });
+
+                    if (response.ok) {
+                        successCount++;
+                    } else {
+                        errorCount++;
+                    }
+                } catch (error) {
+                    errorCount++;
+                }
+            }
+
+            alert(`Import hoàn tất!\nThành công: ${successCount}\nLỗi: ${errorCount}`);
+            loadEmployees();
+            document.getElementById('excelFile').value = '';
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchEmployees();
+            }
+        });
+
+        // Seniority and HDLD calculation functions
+        function calculateSeniority() {
+            const ngayVao = document.getElementById('ngayVao').value;
+            if (ngayVao) {
+                const seniority = calculateSeniorityFromDate(ngayVao);
+                document.getElementById('thamNien').value = seniority.text;
+                document.getElementById('hdld').value = seniority.hdld;
+            }
+        }
+
+        function calculateSeniorityFromDate(ngayVao) {
+            const startDate = new Date(ngayVao);
+            const currentDate = new Date();
+            
+            // Calculate difference in days
+            const timeDiff = currentDate.getTime() - startDate.getTime();
+            const totalDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+            
+            // Calculate years, months, and days
+            let years = currentDate.getFullYear() - startDate.getFullYear();
+            let months = currentDate.getMonth() - startDate.getMonth();
+            let days = currentDate.getDate() - startDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0);
+                days += lastMonth.getDate();
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Format text
+            let thamNienText = '';
+            if (years > 0) thamNienText += `${years} năm `;
+            if (months > 0) thamNienText += `${months} tháng `;
+            if (days > 0 || (years === 0 && months === 0)) thamNienText += `${days} ngày`;
+            
+            // Determine HDLD based on seniority
+            let hdld = '';
+            if (totalDays < 60) { // Less than 2 months
+                hdld = 'Thử việc';
+            } else if (totalDays < 730) { // Less than 2 years
+                hdld = 'Hợp đồng';
+            } else { // 2 years or more
+                hdld = 'Chính thức';
+            }
+            
+            return {
+                text: thamNienText.trim(),
+                hdld: hdld,
+                totalDays: totalDays
+            };
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('vi-VN');
+        }
+
+        function getHDLDColor(hdld) {
+            switch (hdld) {
+                case 'Thử việc':
+                    return 'bg-yellow-100 text-yellow-800';
+                case 'Hợp đồng':
+                    return 'bg-blue-100 text-blue-800';
+                case 'Chính thức':
+                    return 'bg-green-100 text-green-800';
+                default:
+                    return 'bg-gray-100 text-gray-800';
+            }
+        }
+    </script>
+</body>
+</html>
