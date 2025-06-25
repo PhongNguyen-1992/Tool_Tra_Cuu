@@ -5,12 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
 
     const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim().toUpperCase();
-    const password = document.getElementById('signupPassword').value.trim();
+    const lastName = document.getElementById('maSoNV').value.trim().toUpperCase();    
     const department = document.getElementById('department').value;
     const mail = document.getElementById('mail').value.trim();
 
-    if (!firstName || !lastName || !department || !mail) {
+    if (!firstName || !maSoNV || !department || !mail) {
       alert("Vui lòng điền đầy đủ thông tin.");
       return;
     }
@@ -20,17 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    if (password.length < 6) {
-      alert("Mật khẩu phải từ 6 ký tự trở lên.");
-      return;
-    }
+    // if (password.length < 6) {
+    //   alert("Mật khẩu phải từ 6 ký tự trở lên.");
+    //   return;
+    // }
 
     // Tạo username: ví dụ SG01.USER1 → PNC01.LASTNAME
     let username = '';
     if (department === 'SG01.USER1') {
-      username = `PNC01.${lastName}`;
+      username = `${maSoNV}`;
     } else if (department === 'SG01.USER2') {
-      username = `PNC08.${lastName}`;
+      username = `${maSoNV}`;
     } else {
       alert("Phòng ban không hợp lệ!");
       return;
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         body: JSON.stringify({
           username,
           firstName,
-          lastName,
+          maSoNV,
           password,
           department,
           mail,
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (res.ok) {
         document.getElementById('signupMessage').textContent =
-          `✅ Đăng ký thành công!\nTên đăng nhập: ${username}\nVui lòng chờ phê duyệt.`;
+          `✅ Đăng ký thành công!\nTên đăng nhập được cấp là: ${username}\n Vui lòng lưu lại và chờ phê duyệt.`;
         document.getElementById('signupForm').reset();
       } else {
         throw new Error("Gửi dữ liệu thất bại");

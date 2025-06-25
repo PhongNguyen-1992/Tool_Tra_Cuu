@@ -527,7 +527,7 @@ function renderUsersInTable(users, tableBodyId, isPending) {
                                         <div class="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold">
                                             ${user.username.charAt(0).toUpperCase()}
                                         </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">${user.username}</div>
                                         <div class="text-sm text-gray-500">${user.mail}</div>

@@ -8,7 +8,7 @@
 
  body {
      font-family: 'Poppins', sans-serif;
-     background: #0a0a0a;
+     background:white;
      overflow-x: hidden;
      min-height: 100vh;
  }
@@ -291,6 +291,14 @@
  }
 
  .links a {
+     color: #ccc;
+     text-decoration: none;
+     margin: 0 15px;
+     font-size: 0.9rem;
+     transition: all 0.3s ease;
+     position: relative;
+ }
+ .links p {
      color: #ccc;
      text-decoration: none;
      margin: 0 15px;

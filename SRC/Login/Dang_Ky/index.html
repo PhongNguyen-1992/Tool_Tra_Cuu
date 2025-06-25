@@ -4,57 +4,340 @@
   <meta charset="UTF-8">
   <title>Đăng ký tài khoản</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body class="bg-gradient-to-r from-blue-100 to-indigo-200 min-h-screen flex items-center justify-center">
-
-  <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-    <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">Đăng ký tài khoản</h2>
+  <style>
+    .loading {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
     
-    <form id="signupForm" class="space-y-4">
-        <div>
-        <label class="block mb-1 text-sm font-medium text-gray-700">Họ (First Name)</label>
-        <input type="text" id="firstName" placeholder="Nguyễn Hồng..."
-          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .success-message {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .error-message {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    }
+
+    .form-input {
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading">
+    <div class="flex items-center justify-center h-full">
+      <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <div class="spinner"></div>
+        <p class="text-gray-600">Đang xử lý...</p>
       </div>
-      <div>
-        <label class="block mb-1 text-sm font-medium text-gray-700">Tên (Last Name)</label>
-        <input type="text" id="lastName" placeholder="Tên Không Dấu..."
-          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+    </div>
+  </div>
+
+  <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-user-plus text-white text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Đăng ký tài khoản</h2>
+      <p class="text-gray-600">Tạo tài khoản mới để bắt đầu</p>
+    </div>
+    
+    <form id="signupForm" class="space-y-6">
+      <!-- Họ và Tên -->
       <div>
-  <label class="block mb-1 text-sm font-medium text-gray-700">Mail Công Ty</label>
-  <input type="email" id="mail" placeholder="phuongnam....@fpt.net"
-    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-</div>
+        <label class="block mb-2 text-sm font-semibold text-gray-700">
+          <i class="fas fa-user mr-2 text-indigo-500"></i>Họ và Tên
+        </label>
+        <input 
+          type="text" 
+          id="firstName" 
+          placeholder="Nhập họ và tên đầy đủ"
+          class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" 
+          required>
+      </div>
+
+      <!-- MSNV -->
       <div>
-        <label class="block mb-1 text-sm font-medium text-gray-700">Phòng ban</label>
-        <select id="department"
-          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        <label class="block mb-2 text-sm font-semibold text-gray-700">
+          <i class="fas fa-id-badge mr-2 text-indigo-500"></i>Mã Số Nhân Viên
+        </label>
+        <input 
+          type="text" 
+          id="maSoNV" 
+          placeholder="Nhập mã số nhân viên"
+          class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" 
+          required>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-gray-700">
+          <i class="fas fa-envelope mr-2 text-indigo-500"></i>Email Công Ty
+        </label>
+        <input 
+          type="email" 
+          id="mail" 
+          placeholder="ten.nguoi@fpt.net"
+          class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" 
+          required>
+        <p class="text-xs text-gray-500 mt-1">
+          <i class="fas fa-info-circle mr-1"></i>Chỉ chấp nhận email @fpt.net
+        </p>
+      </div>
+
+      <!-- Phòng ban -->
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-gray-700">
+          <i class="fas fa-building mr-2 text-indigo-500"></i>Phòng Ban
+        </label>
+        <select 
+          id="department"
+          class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" 
+          required>
           <option value="">-- Chọn phòng ban --</option>
           <option value="SG01.USER1">SG01.USER1</option>
           <option value="SG01.USER2">SG01.USER2</option>
         </select>
       </div>
+
+      <!-- Submit Button -->
       <div>
-        <label class="block mb-1 text-sm font-medium text-gray-700">Mật khẩu</label>
-        <input type="password" id="signupPassword" placeholder="Tối thiểu 6 ký tự"
-          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required minlength="6">
-      </div>
-      <div>
-        <button type="submit"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition duration-200">Đăng ký</button>
+        <button 
+          type="submit"
+          id="submitBtn"
+          class="btn-submit w-full text-white font-semibold py-3 rounded-lg transition duration-300 flex items-center justify-center">
+          <i class="fas fa-paper-plane mr-2"></i>
+          <span id="submitText">Đăng Ký</span>
+        </button>
       </div>
     </form>
 
-    <div id="signupMessage" class="mt-4 text-center text-sm text-green-600 font-semibold"></div>
+    <!-- Message Area -->
+    <div id="messageArea"></div>
 
-    <p class="text-center mt-6 text-sm text-gray-600">
-      Đã có tài khoản? 
-      <a href="login.html" class="text-indigo-600 hover:underline">Đăng nhập</a>
-    </p>
+    <!-- Footer -->
+    <div class="text-center mt-8">
+      <p class="text-gray-600 text-sm">
+        Đã có tài khoản? 
+        <a href="login.html" class="text-indigo-600 hover:text-indigo-800 font-semibold hover:underline transition duration-200">
+          Đăng nhập ngay
+        </a>
+      </p>
+    </div>
   </div>
 
-  <script src="./main.js"></script>
+  <script>
+    const SIGNUP_API = 'https://684981f845f4c0f5ee71c0a8.mockapi.io/DangKySG01';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('signupForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const messageArea = document.getElementById('messageArea');
+      const loadingOverlay = document.getElementById('loadingOverlay');
+
+      // Hàm hiển thị loading
+      function showLoading(show) {
+        loadingOverlay.style.display = show ? 'flex' : 'none';
+        submitBtn.disabled = show;
+        submitText.textContent = show ? 'Đang xử lý...' : 'Đăng Ký';
+      }
+
+      // Hàm hiển thị thông báo
+      function showMessage(message, type = 'success') {
+        const messageClass = type === 'success' ? 'success-message' : 'error-message';
+        const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
+        
+        messageArea.innerHTML = `
+          <div class="${messageClass}">
+            <div class="flex items-start">
+              <i class="${icon} mr-3 mt-1"></i>
+              <div class="flex-1">
+                ${message}
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Cuộn đến thông báo
+        messageArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Xử lý form submit
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Lấy dữ liệu form
+        const firstName = document.getElementById('firstName').value.trim();
+        const maSoNV = document.getElementById('maSoNV').value.trim().toUpperCase();    
+        const department = document.getElementById('department').value;
+        const mail = document.getElementById('mail').value.trim().toLowerCase();
+
+        // Validate dữ liệu
+        if (!firstName || !maSoNV || !department || !mail) {
+          showMessage('Vui lòng điền đầy đủ thông tin!', 'error');
+          return;
+        }
+
+        if (!mail.endsWith('@fpt.net')) {
+          showMessage('Email phải có đuôi @fpt.net!', 'error');
+          return;
+        }
+
+        if (firstName.length < 2) {
+          showMessage('Họ tên phải có ít nhất 2 ký tự!', 'error');
+          return;
+        }
+
+        if (maSoNV.length < 3) {
+          showMessage('Mã số nhân viên không hợp lệ!', 'error');
+          return;
+        }
+
+        // Tạo username từ MSNV
+        let username = maSoNV;
+
+        // Hiển thị loading
+        showLoading(true);
+        messageArea.innerHTML = '';
+
+        try {
+          // Gửi request
+          const response = await fetch(SIGNUP_API, {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              username: username,
+              firstName: firstName,
+              maSoNV: maSoNV,
+              department: department,
+              mail: mail,
+              approved: false,
+              rejected: false,
+              createdAt: new Date().toISOString()
+            })
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            
+            // Hiển thị thành công
+            showMessage(`
+              <div>
+                <h3 class="font-bold text-lg mb-2">🎉 Đăng ký thành công!</h3>
+                <div class="space-y-2 text-sm">
+                  <p><strong>Tên đăng nhập:</strong> ${username}</p>
+                  <p><strong>Họ tên:</strong> ${firstName}</p>
+                  <p><strong>Email:</strong> ${mail}</p>
+                  <p><strong>Phòng ban:</strong> ${department}</p>
+                </div>
+                <div class="mt-4 p-3 bg-white/20 rounded-lg">
+                  <p class="text-sm">
+                    <i class="fas fa-clock mr-1"></i>
+                    Tài khoản đang chờ phê duyệt từ quản trị viên
+                  </p>
+                </div>
+              </div>
+            `, 'success');
+            
+            // Reset form
+            form.reset();
+            
+          } else {
+            throw new Error(`Lỗi ${response.status}: ${response.statusText}`);
+          }
+          
+        } catch (error) {
+          console.error('Signup error:', error);
+          showMessage(`
+            <div>
+              <h3 class="font-bold mb-2">❌ Đăng ký thất bại!</h3>
+              <p class="text-sm">${error.message}</p>
+              <p class="text-sm mt-2">Vui lòng thử lại sau hoặc liên hệ quản trị viên.</p>
+            </div>
+          `, 'error');
+        } finally {
+          showLoading(false);
+        }
+      });
+
+      // Validate email real-time
+      document.getElementById('mail').addEventListener('blur', function() {
+        const email = this.value.trim();
+        if (email && !email.endsWith('@fpt.net')) {
+          this.classList.add('border-red-400');
+          this.classList.remove('border-gray-300');
+        } else {
+          this.classList.remove('border-red-400');
+          this.classList.add('border-gray-300');
+        }
+      });
+
+      // Auto uppercase cho MSNV
+      document.getElementById('maSoNV').addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
+      });
+    });
+  </script>
+
 </body>
 </html>
