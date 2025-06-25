@@ -121,8 +121,7 @@ function renderPendingUsers() {
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4">
-                        <div class="text-sm font-medium text-gray-900">${user.lastName}</div>
+                    <td class="px-6 py-4">                        
                         <div class="text-sm text-gray-500">${user.firstName || 'N/A'}</div>
                     </td>
                     <td class="px-6 py-4">
