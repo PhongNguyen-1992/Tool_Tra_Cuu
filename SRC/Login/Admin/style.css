@@ -1,118 +1,67 @@
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+ .table-row:hover {
+   background-color: #f8fafc;
+ }
 
-    * {
-      font-family: 'Inter', sans-serif;
-    }
+ .status-badge {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.25rem;
+   padding: 0.25rem 0.75rem;
+   border-radius: 9999px;
+   font-size: 0.75rem;
+   font-weight: 500;
+ }
 
-    .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+ .status-pending {
+   background-color: #fef3c7;
+   color: #92400e;
+ }
 
-    .card-shadow {
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+ .status-approved {
+   background-color: #d1fae5;
+   color: #065f46;
+ }
 
-    .btn-primary {
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      transition: all 0.3s ease;
-    }
+ .btn-success {
+   background-color: #10b981;
+   transition: all 0.2s;
+ }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-    }
+ .btn-success:hover {
+   background-color: #059669;
+   transform: translateY(-1px);
+ }
 
-    .btn-success {
-      background: linear-gradient(45deg, #10b981, #059669);
-      transition: all 0.3s ease;
-    }
+ .btn-danger {
+   background-color: #ef4444;
+   transition: all 0.2s;
+ }
 
-    .btn-success:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
-    }
+ .btn-danger:hover {
+   background-color: #dc2626;
+   transform: translateY(-1px);
+ }
 
-    .btn-danger {
-      background: linear-gradient(45deg, #ef4444, #dc2626);
-      transition: all 0.3s ease;
-    }
+ .btn-primary {
+   background-color: #3b82f6;
+   transition: all 0.2s;
+ }
 
-    .btn-danger:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(239, 68, 68, 0.4);
-    }
+ .btn-primary:hover {
+   background-color: #2563eb;
+   transform: translateY(-1px);
+ }
 
-    .table-row {
-      transition: all 0.3s ease;
-    }
+ .animate-spin {
+   animation: spin 1s linear infinite;
+ }
 
-    .table-row:hover {
-      background: linear-gradient(90deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-      transform: scale(1.01);
-    }
+ @keyframes spin {
+   from {
+     transform: rotate(0deg);
+   }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      font-weight: 500;
-    }
-
-    .status-pending {
-      background: rgba(251, 191, 36, 0.1);
-      color: #d97706;
-      border: 1px solid rgba(251, 191, 36, 0.2);
-    }
-
-    .status-approved {
-      background: rgba(16, 185, 129, 0.1);
-      color: #059669;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-
-    .animate-pulse-slow {
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-
-    .tab-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .tab-button.active {
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      color: white;
-    }
-
-    .tab-button:not(.active):hover {
-      background: rgba(102, 126, 234, 0.1);
-    }
-
-    .loading-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-
-    .stats-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .stats-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
+   to {
+     transform: rotate(360deg);
+   }
+ }

@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Trị JSONBin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></linearGradient></defs><path d="M0,50 Q250,0 500,50 T1000,50 L1000,200 L0,200 Z" fill="url(%23grad)"/></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tabs {
+            display: flex;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
+            padding: 0 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 20px 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border-radius: 12px 12px 0 0;
+            margin: 10px 5px 0;
+        }
+
+        .tab:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 -5px 20px rgba(102, 126, 234, 0.2);
+            margin-bottom: -1px;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+            background: white;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-right: 12px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(72, 187, 120, 0.4);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(237, 137, 54, 0.3);
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(237, 137, 54, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(245, 101, 101, 0.3);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(245, 101, 101, 0.4);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .data-table th, .data-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr {
+            transition: all 0.3s ease;
+        }
+
+        .data-table tr:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            transform: scale(1.01);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status {
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-weight: 500;
+            border-left: 4px solid;
+            backdrop-filter: blur(10px);
+        }
+
+        .status.success {
+            background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%);
+            color: #2d5a3d;
+            border-left-color: #48bb78;
+        }
+
+        .status.error {
+            background: linear-gradient(135deg, rgba(245, 101, 101, 0.1) 0%, rgba(229, 62, 62, 0.1) 100%);
+            color: #742a2a;
+            border-left-color: #f56565;
+        }
+
+        .status.info {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: #2d3748;
+            border-left-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .file-input-label {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3);
+        }
+
+        .file-input-label:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(108, 117, 125, 0.4);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+
+        .loading.show {
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        .readonly-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px solid #dee2e6;
+            position: relative;
+        }
+
+        .readonly-section::before {
+            content: '🔒';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            opacity: 0.5;
+        }
+
+        .readonly-section h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .readonly-section p {
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 16px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            .tab {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .data-table {
+                font-size: 14px;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎛️ Trang Quản Trị JSONBin</h1>
+            <p>Quản lý dữ liệu Nhân Sự, Loại Cls, Tồn triển khai & Tồn bảo trì</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('nhansu')">👥 Nhân Sự</button>
+            <button class="tab" onclick="showTab('loaicls')">📋 Loại Cls</button>
+            <button class="tab" onclick="showTab('tontrienkhai')">🚀 Tồn triển khai</button>
+            <button class="tab" onclick="showTab('tonbaotri')">🔧 Tồn bảo trì</button>
+        </div>
+
+        <!-- Nhân Sự Tab -->
+        <div id="nhansu" class="tab-content active">
+            <div id="nhansu-status" class="status" style="display: none;"></div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nhansu-id">ID:</label>
+                    <input type="text" id="nhansu-id" placeholder="Để trống khi thêm mới">
+                </div>
+                <div class="form-group">
+                    <label for="nhansu-nhansu">Nhân Sự:</label>
+                    <input type="text" id="nhansu-nhansu" placeholder="Nhập mã nhân sự (VD: PNC11.LAMPT4)">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nhansu-block">Block:</label>
+                    <input type="text" id="nhansu-block" placeholder="Nhập block (VD: Q.Binh Tan-001)">
+                </div>
+                <div class="form-group">
+                    <label for="nhansu-doitac">Đối Tác:</label>
+                    <input type="text" id="nhansu-doitac" placeholder="Nhập đối tác (VD: Phuong Nam-11)">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <button class="btn btn-primary" onclick="addNhanSu()">➕ Thêm</button>
+                <button class="btn btn-success" onclick="updateNhanSu()">✏️ Sửa</button>
+                <button class="btn btn-warning" onclick="loadNhanSu()">🔄 Tải lại</button>
+                <div class="file-input">
+                    <input type="file" id="nhansu-file" accept=".json" onchange="importNhanSu()">
+                    <label for="nhansu-file" class="file-input-label">📁 Import JSON</label>
+                </div>
+                <button class="btn btn-success" onclick="exportNhanSu()">📤 Export</button>
+            </div>
+
+            <div class="loading" id="nhansu-loading">
+                <div class="spinner"></div>
+                <p>Đang xử lý...</p>
+            </div>
+
+            <div id="nhansu-data"></div>
+        </div>
+
+        <!-- Loại Cls Tab -->
+        <div id="loaicls" class="tab-content">
+            <div id="loaicls-status" class="status" style="display: none;"></div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="loaicls-id">ID:</label>
+                    <input type="text" id="loaicls-id" placeholder="Để trống khi thêm mới">
+                </div>
+                <div class="form-group">
+                    <label for="loaicls-loaicls">Loại Cls:</label>
+                    <input type="text" id="loaicls-loaicls" placeholder="Nhập loại cls (VD: Logic)">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loaicls-tinhtrang">Tình Trạng:</label>
+                <textarea id="loaicls-tinhtrang" rows="3" placeholder="Nhập tình trạng (VD: [FSafe] - KH yêu cầu mua/đổi thiết bị để sử dụng được Fsafe)"></textarea>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <button class="btn btn-primary" onclick="addLoaiCls()">➕ Thêm</button>
+                <button class="btn btn-success" onclick="updateLoaiCls()">✏️ Sửa</button>
+                <button class="btn btn-warning" onclick="loadLoaiCls()">🔄 Tải lại</button>
+                <div class="file-input">
+                    <input type="file" id="loaicls-file" accept=".json" onchange="importLoaiCls()">
+                    <label for="loaicls-file" class="file-input-label">📁 Import JSON</label>
+                </div>
+                <button class="btn btn-success" onclick="exportLoaiCls()">📤 Export</button>
+            </div>
+
+            <div class="loading" id="loaicls-loading">
+                <div class="spinner"></div>
+                <p>Đang xử lý...</p>
+            </div>
+
+            <div id="loaicls-data"></div>
+        </div>
+
+        <!-- Tồn triển khai Tab -->
+        <div id="tontrienkhai" class="tab-content">
+            <div class="readonly-section">
+                <h3>📊 Tồn triển khai (Chỉ xem)</h3>
+                <p>Chức năng này chỉ cho phép import dữ liệu và hiển thị kết quả</p>
+                
+                <div id="tontrienkhai-status" class="status" style="display: none;"></div>
+                
+                <div style="margin-bottom: 20px;">
+                    <button class="btn btn-warning" onclick="loadTonTrienKhai()">🔄 Tải lại</button>
+                    <div class="file-input">
+                        <input type="file" id="tontrienkhai-file" accept=".json" onchange="importTonTrienKhai()">
+                        <label for="tontrienkhai-file" class="file-input-label">📁 Import JSON</label>
+                    </div>
+                </div>
+
+                <div class="loading" id="tontrienkhai-loading">
+                    <div class="spinner"></div>
+                    <p>Đang xử lý...</p>
+                </div>
+
+                <div id="tontrienkhai-data"></div>
+            </div>
+        </div>
+
+        <!-- Tồn bảo trì Tab -->
+        <div id="tonbaotri" class="tab-content">
+            <div class="readonly-section">
+                <h3>🔧 Tồn bảo trì (Chỉ xem)</h3>
+                <p>Chức năng này chỉ cho phép import dữ liệu và hiển thị kết quả</p>
+                
+                <div id="tonbaotri-status" class="status" style="display: none;"></div>
+                
+                <div style="margin-bottom: 20px;">
+                    <button class="btn btn-warning" onclick="loadTonBaoTri()">🔄 Tải lại</button>
+                    <div class="file-input">
+                        <input type="file" id="tonbaotri-file" accept=".json" onchange="importTonBaoTri()">
+                        <label for="tonbaotri-file" class="file-input-label">📁 Import JSON</label>
+                    </div>
+                </div>
+
+                <div class="loading" id="tonbaotri-loading">
+                    <div class="spinner"></div>
+                    <p>Đang xử lý...</p>
+                </div>
+
+                <div id="tonbaotri-data"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const config = {
+            apiKey: "$2a$10$dxJzzGFLNbMgbXsbVbvj8e/RW7gf2roGVn0xCgG9yv1QzqacqPZS2",
+            binIds: {
+                nhansu: "686662c68960c979a5b65a7a",
+                loaicls: "6866633b8a456b7966ba96aa",
+                tontrienkhai: "686772c78960c979a5b6d8ec",
+                tonbaotri: "686773538960c979a5b6d91d"
+            }
+        };
+
+        // Utility functions
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Show selected tab
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function showStatus(section, message, type = 'info') {
+            const statusDiv = document.getElementById(`${section}-status`);
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showLoading(section, show = true) {
+            const loadingDiv = document.getElementById(`${section}-loading`);
+            if (show) {
+                loadingDiv.classList.add('show');
+            } else {
+                loadingDiv.classList.remove('show');
+            }
+        }
+
+        // API functions
+        async function makeApiCall(method, binId, data = null) {
+            const url = `https://api.jsonbin.io/v3/b/${binId}`;
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': config.apiKey,
+                    'X-Access-Key': config.apiKey
+                }
+            };
+
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(url, options);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                console.log('API Response:', result);
+                
+                return result;
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
+        }
+
+        // Nhân Sự Functions
+        async function loadNhanSu() {
+            showLoading('nhansu', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.nhansu);
+                console.log('Nhân sự response:', response);
+                
+                let data = [];
+                if (response && response.record) {
+                    data = Array.isArray(response.record) ? response.record : [response.record];
+                }
+                
+                displayNhanSu(data);
+                showStatus('nhansu', `Tải dữ liệu nhân sự thành công! (${data.length} bản ghi)`, 'success');
+            } catch (error) {
+                console.error('Load nhân sự error:', error);
+                showStatus('nhansu', 'Lỗi khi tải dữ liệu nhân sự: ' + error.message, 'error');
+                // Show empty table on error
+                displayNhanSu([]);
+            }
+            showLoading('nhansu', false);
+        }
+
+        function displayNhanSu(data) {
+            const container = document.getElementById('nhansu-data');
+            if (!Array.isArray(data) || data.length === 0) {
+                container.innerHTML = '<p>Không có dữ liệu</p>';
+                return;
+            }
+
+            let html = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Chức vụ</th>
+                            <th>Phòng ban</th>
+                            <th>Email</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.id || 'N/A'}</td>
+                        <td>${item.name || 'N/A'}</td>
+                        <td>${item.position || 'N/A'}</td>
+                        <td>${item.department || 'N/A'}</td>
+                        <td>${item.email || 'N/A'}</td>
+                        <td>
+                            <button class="btn btn-warning" onclick="editNhanSu(${JSON.stringify(item).replace(/"/g, '&quot;')})">Sửa</button>
+                            <button class="btn btn-danger" onclick="deleteNhanSu('${item.id}')">Xóa</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function addNhanSu() {
+            const name = document.getElementById('nhansu-name').value;
+            const position = document.getElementById('nhansu-position').value;
+            const department = document.getElementById('nhansu-department').value;
+            const email = document.getElementById('nhansu-email').value;
+
+            if (!name || !position || !department || !email) {
+                showStatus('nhansu', 'Vui lòng điền đầy đủ thông tin!', 'error');
+                return;
+            }
+
+            showLoading('nhansu', true);
+            try {
+                // Get current data
+                const response = await makeApiCall('GET', config.binIds.nhansu);
+                const currentData = response.record || [];
+
+                // Add new item
+                const newItem = {
+                    id: Date.now().toString(),
+                    name: name,
+                    position: position,
+                    department: department,
+                    email: email
+                };
+
+                currentData.push(newItem);
+
+                // Update data
+                await makeApiCall('PUT', config.binIds.nhansu, currentData);
+                
+                clearNhanSuForm();
+                displayNhanSu(currentData);
+                showStatus('nhansu', 'Thêm nhân sự thành công!', 'success');
+            } catch (error) {
+                showStatus('nhansu', 'Lỗi khi thêm nhân sự: ' + error.message, 'error');
+            }
+            showLoading('nhansu', false);
+        }
+
+        function editNhanSu(item) {
+            document.getElementById('nhansu-id').value = item.id;
+            document.getElementById('nhansu-name').value = item.name;
+            document.getElementById('nhansu-position').value = item.position;
+            document.getElementById('nhansu-department').value = item.department;
+            document.getElementById('nhansu-email').value = item.email;
+        }
+
+        async function updateNhanSu() {
+            const id = document.getElementById('nhansu-id').value;
+            const name = document.getElementById('nhansu-name').value;
+            const position = document.getElementById('nhansu-position').value;
+            const department = document.getElementById('nhansu-department').value;
+            const email = document.getElementById('nhansu-email').value;
+
+            if (!id || !name || !position || !department || !email) {
+                showStatus('nhansu', 'Vui lòng điền đầy đủ thông tin!', 'error');
+                return;
+            }
+
+            showLoading('nhansu', true);
+            try {
+                // Get current data
+                const response = await makeApiCall('GET', config.binIds.nhansu);
+                const currentData = response.record || [];
+
+                // Find and update item
+                const index = currentData.findIndex(item => item.id === id);
+                if (index !== -1) {
+                    currentData[index] = {
+                        id: id,
+                        name: name,
+                        position: position,
+                        department: department,
+                        email: email
+                    };
+
+                    // Update data
+                    await makeApiCall('PUT', config.binIds.nhansu, currentData);
+                    
+                    clearNhanSuForm();
+                    displayNhanSu(currentData);
+                    showStatus('nhansu', 'Cập nhật nhân sự thành công!', 'success');
+                } else {
+                    showStatus('nhansu', 'Không tìm thấy nhân sự để cập nhật!', 'error');
+                }
+            } catch (error) {
+                showStatus('nhansu', 'Lỗi khi cập nhật nhân sự: ' + error.message, 'error');
+            }
+            showLoading('nhansu', false);
+        }
+
+        async function deleteNhanSu(id) {
+            if (!confirm('Bạn có chắc chắn muốn xóa nhân sự này?')) {
+                return;
+            }
+
+            showLoading('nhansu', true);
+            try {
+                // Get current data
+                const response = await makeApiCall('GET', config.binIds.nhansu);
+                const currentData = response.record || [];
+
+                // Remove item
+                const updatedData = currentData.filter(item => item.id !== id);
+
+                // Update data
+                await makeApiCall('PUT', config.binIds.nhansu, updatedData);
+                
+                displayNhanSu(updatedData);
+                showStatus('nhansu', 'Xóa nhân sự thành công!', 'success');
+            } catch (error) {
+                showStatus('nhansu', 'Lỗi khi xóa nhân sự: ' + error.message, 'error');
+            }
+            showLoading('nhansu', false);
+        }
+
+        function clearNhanSuForm() {
+            document.getElementById('nhansu-id').value = '';
+            document.getElementById('nhansu-name').value = '';
+            document.getElementById('nhansu-position').value = '';
+            document.getElementById('nhansu-department').value = '';
+            document.getElementById('nhansu-email').value = '';
+        }
+
+        async function importNhanSu() {
+            const fileInput = document.getElementById('nhansu-file');
+            const file = fileInput.files[0];
+            
+            if (!file) return;
+
+            showLoading('nhansu', true);
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                if (!Array.isArray(data)) {
+                    throw new Error('Dữ liệu import phải là một mảng');
+                }
+
+                await makeApiCall('PUT', config.binIds.nhansu, data);
+                displayNhanSu(data);
+                showStatus('nhansu', 'Import dữ liệu nhân sự thành công!', 'success');
+            } catch (error) {
+                showStatus('nhansu', 'Lỗi khi import dữ liệu: ' + error.message, 'error');
+            }
+            showLoading('nhansu', false);
+            fileInput.value = '';
+        }
+
+        async function exportNhanSu() {
+            try {
+                const response = await makeApiCall('GET', config.binIds.nhansu);
+                const data = response.record || [];
+                
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'nhansu_export.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                showStatus('nhansu', 'Export dữ liệu nhân sự thành công!', 'success');
+            } catch (error) {
+                showStatus('nhansu', 'Lỗi khi export dữ liệu: ' + error.message, 'error');
+            }
+        }
+
+        // Loại Cls Functions
+        async function loadLoaiCls() {
+            showLoading('loaicls', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.loaicls);
+                console.log('Loại cls response:', response);
+                
+                let data = [];
+                if (response && response.record) {
+                    data = Array.isArray(response.record) ? response.record : [response.record];
+                }
+                
+                displayLoaiCls(data);
+                showStatus('loaicls', `Tải dữ liệu loại cls thành công! (${data.length} bản ghi)`, 'success');
+            } catch (error) {
+                console.error('Load loại cls error:', error);
+                showStatus('loaicls', 'Lỗi khi tải dữ liệu loại cls: ' + error.message, 'error');
+                displayLoaiCls([]);
+            }
+            showLoading('loaicls', false);
+        }
+
+        function displayLoaiCls(data) {
+            const container = document.getElementById('loaicls-data');
+            if (!Array.isArray(data) || data.length === 0) {
+                container.innerHTML = '<p>Không có dữ liệu</p>';
+                return;
+            }
+
+            let html = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên loại</th>
+                            <th>Mã loại</th>
+                            <th>Độ ưu tiên</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.forEach(item => {
+                const priorityText = ['', 'Thấp', 'Trung bình', 'Cao', 'Rất cao'][item.priority] || 'N/A';
+                html += `
+                    <tr>
+                        <td>${item.id || 'N/A'}</td>
+                        <td>${item.name || 'N/A'}</td>
+                        <td>${item.code || 'N/A'}</td>
+                        <td>${priorityText}</td>
+                        <td>${item.description || 'N/A'}</td>
+                        <td>
+                            <button class="btn btn-warning" onclick="editLoaiCls(${JSON.stringify(item).replace(/"/g, '&quot;')})">Sửa</button>
+                            <button class="btn btn-danger" onclick="deleteLoaiCls('${item.id}')">Xóa</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function addLoaiCls() {
+            const name = document.getElementById('loaicls-name').value;
+            const code = document.getElementById('loaicls-code').value;
+            const priority = document.getElementById('loaicls-priority').value;
+            const description = document.getElementById('loaicls-description').value;
+
+            if (!name || !code) {
+                showStatus('loaicls', 'Vui lòng điền đầy đủ thông tin bắt buộc!', 'error');
+                return;
+            }
+
+            showLoading('loaicls', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.loaicls);
+                const currentData = response.record || [];
+
+                const newItem = {
+                    id: Date.now().toString(),
+                    name: name,
+                    code: code,
+                    priority: parseInt(priority),
+                    description: description
+                };
+
+                currentData.push(newItem);
+
+                await makeApiCall('PUT', config.binIds.loaicls, currentData);
+                
+                clearLoaiClsForm();
+                displayLoaiCls(currentData);
+                showStatus('loaicls', 'Thêm loại cls thành công!', 'success');
+            } catch (error) {
+                showStatus('loaicls', 'Lỗi khi thêm loại cls: ' + error.message, 'error');
+            }
+            showLoading('loaicls', false);
+        }
+
+        function editLoaiCls(item) {
+            document.getElementById('loaicls-id').value = item.id;
+            document.getElementById('loaicls-name').value = item.name;
+            document.getElementById('loaicls-code').value = item.code;
+            document.getElementById('loaicls-priority').value = item.priority;
+            document.getElementById('loaicls-description').value = item.description;
+        }
+
+        async function updateLoaiCls() {
+            const id = document.getElementById('loaicls-id').value;
+            const name = document.getElementById('loaicls-name').value;
+            const code = document.getElementById('loaicls-code').value;
+            const priority = document.getElementById('loaicls-priority').value;
+            const description = document.getElementById('loaicls-description').value;
+
+            if (!id || !name || !code) {
+                showStatus('loaicls', 'Vui lòng điền đầy đủ thông tin bắt buộc!', 'error');
+                return;
+            }
+
+            showLoading('loaicls', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.loaicls);
+                const currentData = response.record || [];
+
+                const index = currentData.findIndex(item => item.id === id);
+                if (index !== -1) {
+                    currentData[index] = {
+                        id: id,
+                        name: name,
+                        code: code,
+                        priority: parseInt(priority),
+                        description: description
+                    };
+
+                    await makeApiCall('PUT', config.binIds.loaicls, currentData);
+                    
+                    clearLoaiClsForm();
+                    displayLoaiCls(currentData);
+                    showStatus('loaicls', 'Cập nhật loại cls thành công!', 'success');
+                } else {
+                    showStatus('loaicls', 'Không tìm thấy loại cls để cập nhật!', 'error');
+                }
+            } catch (error) {
+                showStatus('loaicls', 'Lỗi khi cập nhật loại cls: ' + error.message, 'error');
+            }
+            showLoading('loaicls', false);
+        }
+
+        async function deleteLoaiCls(id) {
+            if (!confirm('Bạn có chắc chắn muốn xóa loại cls này?')) {
+                return;
+            }
+
+            showLoading('loaicls', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.loaicls);
+                const currentData = response.record || [];
+
+                const updatedData = currentData.filter(item => item.id !== id);
+
+                await makeApiCall('PUT', config.binIds.loaicls, updatedData);
+                
+                displayLoaiCls(updatedData);
+                showStatus('loaicls', 'Xóa loại cls thành công!', 'success');
+            } catch (error) {
+                showStatus('loaicls', 'Lỗi khi xóa loại cls: ' + error.message, 'error');
+            }
+            showLoading('loaicls', false);
+        }
+
+        function clearLoaiClsForm() {
+            document.getElementById('loaicls-id').value = '';
+            document.getElementById('loaicls-name').value = '';
+            document.getElementById('loaicls-code').value = '';
+            document.getElementById('loaicls-priority').value = '1';
+            document.getElementById('loaicls-description').value = '';
+        }
+
+        async function importLoaiCls() {
+            const fileInput = document.getElementById('loaicls-file');
+            const file = fileInput.files[0];
+            
+            if (!file) return;
+
+            showLoading('loaicls', true);
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                if (!Array.isArray(data)) {
+                    throw new Error('Dữ liệu import phải là một mảng');
+                }
+
+                await makeApiCall('PUT', config.binIds.loaicls, data);
+                displayLoaiCls(data);
+                showStatus('loaicls', 'Import dữ liệu loại cls thành công!', 'success');
+            } catch (error) {
+                showStatus('loaicls', 'Lỗi khi import dữ liệu: ' + error.message, 'error');
+            }
+            showLoading('loaicls', false);
+            fileInput.value = '';
+        }
+
+        async function exportLoaiCls() {
+            try {
+                const response = await makeApiCall('GET', config.binIds.loaicls);
+                const data = response.record || [];
+                
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'loaicls_export.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                showStatus('loaicls', 'Export dữ liệu loại cls thành công!', 'success');
+            } catch (error) {
+                showStatus('loaicls', 'Lỗi khi export dữ liệu: ' + error.message, 'error');
+            }
+        }
+
+        // Tồn triển khai Functions (Read-only)
+        async function loadTonTrienKhai() {
+            showLoading('tontrienkhai', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.tontrienkhai);
+                console.log('Tồn triển khai response:', response);
+                
+                let data = [];
+                if (response && response.record) {
+                    data = Array.isArray(response.record) ? response.record : [response.record];
+                }
+                
+                displayTonTrienKhai(data);
+                showStatus('tontrienkhai', `Tải dữ liệu tồn triển khai thành công! (${data.length} bản ghi)`, 'success');
+            } catch (error) {
+                console.error('Load tồn triển khai error:', error);
+                showStatus('tontrienkhai', 'Lỗi khi tải dữ liệu tồn triển khai: ' + error.message, 'error');
+                displayTonTrienKhai([]);
+            }
+            showLoading('tontrienkhai', false);
+        }
+
+        function displayTonTrienKhai(data) {
+            const container = document.getElementById('tontrienkhai-data');
+            if (!Array.isArray(data) || data.length === 0) {
+                container.innerHTML = '<p>Không có dữ liệu</p>';
+                return;
+            }
+
+            let html = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên dự án</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Tiến độ (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.id || 'N/A'}</td>
+                        <td>${item.projectName || 'N/A'}</td>
+                        <td>${item.status || 'N/A'}</td>
+                        <td>${item.startDate || 'N/A'}</td>
+                        <td>${item.endDate || 'N/A'}</td>
+                        <td>${item.progress || 0}%</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function importTonTrienKhai() {
+            const fileInput = document.getElementById('tontrienkhai-file');
+            const file = fileInput.files[0];
+            
+            if (!file) return;
+
+            showLoading('tontrienkhai', true);
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                if (!Array.isArray(data)) {
+                    throw new Error('Dữ liệu import phải là một mảng');
+                }
+
+                await makeApiCall('PUT', config.binIds.tontrienkhai, data);
+                displayTonTrienKhai(data);
+                showStatus('tontrienkhai', 'Import dữ liệu tồn triển khai thành công!', 'success');
+            } catch (error) {
+                showStatus('tontrienkhai', 'Lỗi khi import dữ liệu: ' + error.message, 'error');
+            }
+            showLoading('tontrienkhai', false);
+            fileInput.value = '';
+        }
+
+        // Tồn bảo trì Functions (Read-only)
+        async function loadTonBaoTri() {
+            showLoading('tonbaotri', true);
+            try {
+                const response = await makeApiCall('GET', config.binIds.tonbaotri);
+                console.log('Tồn bảo trì response:', response);
+                
+                let data = [];
+                if (response && response.record) {
+                    data = Array.isArray(response.record) ? response.record : [response.record];
+                }
+                
+                displayTonBaoTri(data);
+                showStatus('tonbaotri', `Tải dữ liệu tồn bảo trì thành công! (${data.length} bản ghi)`, 'success');
+            } catch (error) {
+                console.error('Load tồn bảo trì error:', error);
+                showStatus('tonbaotri', 'Lỗi khi tải dữ liệu tồn bảo trì: ' + error.message, 'error');
+                displayTonBaoTri([]);
+            }
+            showLoading('tonbaotri', false);
+        }
+
+        function displayTonBaoTri(data) {
+            const container = document.getElementById('tonbaotri-data');
+            if (!Array.isArray(data) || data.length === 0) {
+                container.innerHTML = '<p>Không có dữ liệu</p>';
+                return;
+            }
+
+            // Create scrollable table for many columns
+            let html = `
+                <div style="overflow-x: auto; max-width: 100%;">
+                    <table class="data-table" style="min-width: 1500px;">
+                        <thead>
+                            <tr>
+                                <th>Vùng</th>
+                                <th>Tỉnh Thành</th>
+                                <th>Chi Nhánh</th>
+                                <th>Số Hợp Đồng</th>
+                                <th>Tên Đầy Đủ</th>
+                                <th>TG Tạo</th>
+                                <th>TG Tồn (Giờ)</th>
+                                <th>Hạn Còn Lại(Giờ)</th>
+                                <th>Loại CL</th>
+                                <th>Nhân Sú</th>
+                                <th>T.Trạng CL</th>
+                                <th>Gói DV</th>
+                                <th>Loại DV</th>
+                                <th>Độ U.Tiên</th>
+                                <th>Tình Trạng HĐ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            data.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item['Vùng'] || 'N/A'}</td>
+                        <td>${item['Tỉnh Thành'] || 'N/A'}</td>
+                        <td>${item['Chi Nhánh'] || 'N/A'}</td>
+                        <td>${item['Số Hợp Đồng'] || 'N/A'}</td>
+                        <td>${item['Tên Đầy Đủ'] || 'N/A'}</td>
+                        <td>${item['TG Tạo'] || 'N/A'}</td>
+                        <td>${item['TG Tồn (Giờ)'] || 'N/A'}</td>
+                        <td>${item['Hạn Còn Lại(Giờ)'] || 'N/A'}</td>
+                        <td>${item['Loại CL'] || 'N/A'}</td>
+                        <td>${item['Nhân Sự'] || 'N/A'}</td>
+                        <td>${item['T.Trạng CL'] || 'N/A'}</td>
+                        <td>${item['Gói DV'] || 'N/A'}</td>
+                        <td>${item['Loại DV'] || 'N/A'}</td>
+                        <td>${item['Độ U.Tiên'] || 'N/A'}</td>
+                        <td>${item['Tình Trạng HĐ'] || 'N/A'}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function importTonBaoTri() {
+            const fileInput = document.getElementById('tonbaotri-file');
+            const file = fileInput.files[0];
+            
+            if (!file) return;
+
+            showLoading('tonbaotri', true);
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                if (!Array.isArray(data)) {
+                    throw new Error('Dữ liệu import phải là một mảng');
+                }
+
+                await makeApiCall('PUT', config.binIds.tonbaotri, data);
+                displayTonBaoTri(data);
+                showStatus('tonbaotri', 'Import dữ liệu tồn bảo trì thành công!', 'success');
+            } catch (error) {
+                showStatus('tonbaotri', 'Lỗi khi import dữ liệu: ' + error.message, 'error');
+            }
+            showLoading('tonbaotri', false);
+            fileInput.value = '';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, testing API...');
+            
+            // Add test button for debugging
+            const header = document.querySelector('.header');
+            const testBtn = document.createElement('button');
+            testBtn.textContent = '🔧 Test API';
+            testBtn.className = 'btn btn-primary';
+            testBtn.style.marginTop = '10px';
+            testBtn.onclick = async () => {
+                console.log('Testing API connection...');
+                try {
+                    // Test with a simple GET request first
+                    const testUrl = `https://api.jsonbin.io/v3/b/${config.binIds.nhansu}`;
+                    console.log('Test URL:', testUrl);
+                    
+                    const response = await fetch(testUrl, {
+                        method: 'GET',
+                        headers: {
+                            'X-Master-Key': config.apiKey
+                        }
+                    });
+                    
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', [...response.headers.entries()]);
+                    
+                    const data = await response.text();
+                    console.log('Raw response:', data);
+                    
+                    try {
+                        const jsonData = JSON.parse(data);
+                        console.log('Parsed JSON:', jsonData);
+                    } catch (e) {
+                        console.log('Failed to parse JSON:', e);
+                    }
+                } catch (error) {
+                    console.error('Test failed:', error);
+                }
+            };
+            header.appendChild(testBtn);
+            
+            // Try to load data
+            loadNhanSu();
+        });
+    </script>
+</body>
+</html>

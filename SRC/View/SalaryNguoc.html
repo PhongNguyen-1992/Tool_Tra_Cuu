@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Lương Ngược - Calculator</title>
+    <link rel="stylesheet" href="../SalaryNguoc/style.css">
+</head>
+<body>
+    <!-- Background decorative elements -->
+    <div class="bg-decoration">
+        <div class="bg-circle bg-circle-1 floating-animation"></div>
+        <div class="bg-circle bg-circle-2 floating-animation-delay-1"></div>
+        <div class="bg-circle bg-circle-3 floating-animation-delay-2"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1 class="gradient-text text-5xl font-bold uppercase tracking-wider mb-2">
+            Tính Lương Ngược
+        </h1>
+        <div class="gradient-line"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            
+            <!-- Form Section -->
+            <div class="column">
+                <div class="glass-card">
+                    <h2 class="text-2xl font-bold mb-6 text-center gradient-text">Nhập Mức Lương Mong Muốn</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Desired Net Salary -->
+                        <div class="input-group">
+                            <input type="number" id="desiredNetSalary" 
+                                class="form-input"
+                                placeholder=" " />
+                            <label for="desiredNetSalary" class="input-label">
+                                💰 Mức Lương Mong Muốn (VNĐ)
+                            </label>
+                        </div>
+
+                        <!-- Bậc Nghề -->
+                        <div class="space-y-2">
+                            <label class="form-label">🎯 Bậc Nghề</label>
+                            <select id="levelBonus" class="form-select">
+                                <option value="">Chọn Bậc Nghề</option>
+                                <option value="0">Bậc 1</option>
+                                <option value="500000">Bậc 2</option>
+                                <option value="1000000">Bậc 3</option>
+                                <option value="1500000">Bậc 4</option>
+                                <option value="2000000">Bậc 5</option>
+                                <option value="2500000">Bậc 6</option>
+                                <option value="3000000">Bậc 7</option>
+                            </select>
+                        </div>
+
+                        <!-- Hệ Số Bảo Trì -->
+                        <div class="space-y-2">
+                            <label class="form-label">🔧 Hệ Số Bảo Trì</label>
+                            <select id="maintenanceCoef" class="form-select">
+                                <option value="1">1.0</option>
+                                <option value="0.9">0.9</option>
+                            </select>
+                        </div>
+
+                        <!-- Checkboxes -->
+                        <div class="grid-cols-1 md-grid-cols-2">
+                            <div class="glass-card checkbox-card">
+                                <div class="checkbox-group">
+                                    <input id="csatCheckbox" type="checkbox" class="form-checkbox" />
+                                    <label for="csatCheckbox" class="text-gray-300 font-medium cursor-pointer">
+                                        🏆 CSAT CLDV > 4.55
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="glass-card checkbox-card">
+                                <div class="checkbox-group">
+                                    <input id="kpdvCheckbox" type="checkbox" class="form-checkbox" checked />
+                                    <label for="kpdvCheckbox" class="text-gray-300 font-medium cursor-pointer">
+                                        ✅ Đủ 2 KPDV
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button id="calculateBtn" class="btn-gradient">
+                            🧮 Tính Số Ca Vụ Cần Thực Hiện
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result & Notes Section -->
+            <div class="column space-y-6">
+                <!-- Result Display -->
+                <div id="result-section" class="result-card text-center hidden">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">🎯 Kết Quả Tính Toán</h3>
+                    <div id="total-deployments" class="text-4xl font-bold text-green-400 mb-4"></div>
+                    
+                    <div class="text-left space-y-6">
+                        <!-- Deployments Breakdown -->
+                        <div class="space-y-2">
+                            <h4 class="text-xl font-semibold text-yellow-400">📋 Chi Tiết Các Ca Vụ Cần Thực Hiện:</h4>
+                            <div class="grid-cols-1 md-grid-cols-2" id="deployments-breakdown">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Salary Breakdown -->
+                        <div class="space-y-2">
+                            <h4 class="text-xl font-semibold text-blue-400">💵 Chi Tiết Lương:</h4>
+                            <div id="salary-breakdown">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Section -->
+                <div class="glass-card">
+                    <h3 class="text-2xl font-bold mb-6 text-red-400">📋 Lưu Ý Quan Trọng</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="icon-container bg-green-500">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                                </svg>
+                            </div>
+                            <p class="text-gray-300">
+                                Sở hữu active (AU): <span class="font-bold text-green-400">1200 × 4.700 VND</span>
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="icon-container bg-green-500">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                                </svg>
+                            </div>
+                            <p class="text-gray-300">
+                                Thưởng KPI CSAT >4.55: <span class="font-bold text-blue-400">700.000 VND</span>
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="icon-container bg-green-500">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                                </svg>
+                            </div>
+                            <p class="text-gray-300">
+                                Thưởng hoa hồng KPDV: <span class="font-bold text-blue-400">800.000 VND</span>
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="icon-container bg-yellow-500">
+                                <span class="text-white text-sm font-bold">!</span>
+                            </div>
+                            <p class="text-gray-300">
+                                Internet chiếm <span class="font-bold text-yellow-400">50%</span> lương triển khai
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="icon-container bg-red-500">
+                                <span class="text-white text-sm font-bold">💼</span>
+                            </div>
+                            <p class="text-gray-300">
+                                Bảo hiểm: <span class="font-bold text-red-400">10.5%</span> lương cơ bản 5.250.000 VND
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="icon-container bg-purple-500">
+                                <span class="text-white text-sm font-bold">🏛️</span>
+                            </div>
+                            <p class="text-gray-300">
+                                Thuế TNCN: Áp dụng khi <span class="font-bold text-purple-400">thu nhập > 11 triệu</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../SalaryNguoc/main.js"></script>
+</body>
+</html>
