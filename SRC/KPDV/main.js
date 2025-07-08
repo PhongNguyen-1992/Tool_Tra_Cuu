@@ -8,7 +8,7 @@
                 services: {
                     'Internet Only': {
                         'Nội thành': '230,000',
-                        'Ngoại thành': '200,000'
+                        'Ngoại thành': '190,000'
                     },
                     'Combo Giải trí': {
                         'Nội thành': '240,000',

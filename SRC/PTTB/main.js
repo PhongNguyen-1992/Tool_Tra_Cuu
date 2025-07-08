@@ -8,7 +8,7 @@
                 services: {
                     'Internet Only': {
                         'Nội thành': '230,000',
-                        'Ngoại thành': '200,000'
+                        'Ngoại thành': '190,000'
                     },
                     'Combo Giải trí': {
                         'Nội thành': '240,000',
@@ -19,7 +19,7 @@
                         'Ngoại thành': '230,000'
                     }
                 },
-                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+                note: 'Tính Đến 5/7 Chưa có thông tin Giảm 10k khi đóng trước 3T, 6T 12T Sẽ Cập Nhật Thêm Khi Có Thông Tin'
             },
             'sky': {
                 name: 'SKY',
@@ -41,7 +41,7 @@
                         'Ngoại thành': '255,000'
                     }
                 },
-                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+                note: 'Tính Đến 5/7 Chưa có thông tin Giảm 10k khi đóng trước 3T, 6T 12T Sẽ Cập Nhật Thêm Khi Có Thông Tin'
             },
             'meta': {
                 name: 'META',
@@ -63,7 +63,7 @@
                         'Ngoại thành': '360,000'
                     }
                 },
-                note: 'Giảm 10K, nếu KH trả trước 3T, 6T, 12T'
+                note: 'Tính Đến 5/7 Chưa có thông tin Giảm 10k khi đóng trước 3T, 6T 12T Sẽ Cập Nhật Thêm Khi Có Thông Tin'
             },
             'giga-f1': {
                 name: 'Giga F1',
