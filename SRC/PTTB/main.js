@@ -19,7 +19,7 @@
                         'Ngoại thành': '230,000'
                     }
                 },
-                note: 'Tính Đến 5/7 Chưa có thông tin Giảm 10k khi đóng trước 3T, 6T 12T Sẽ Cập Nhật Thêm Khi Có Thông Tin'
+                note: 'Giảm 10k khi đóng trước 3T, 6T, 12T'
             },
             'sky': {
                 name: 'SKY',
@@ -41,7 +41,7 @@
                         'Ngoại thành': '255,000'
                     }
                 },
-                note: 'Tính Đến 5/7 Chưa có thông tin Giảm 10k khi đóng trước 3T, 6T 12T Sẽ Cập Nhật Thêm Khi Có Thông Tin'
+                note: 'Giảm 10k khi đóng trước 3T, 6T, 12T'
             },
             'meta': {
                 name: 'META',
@@ -63,7 +63,7 @@
                         'Ngoại thành': '360,000'
                     }
                 },
-                note: 'Tính Đến 5/7 Chưa có thông tin Giảm 10k khi đóng trước 3T, 6T 12T Sẽ Cập Nhật Thêm Khi Có Thông Tin'
+                note: 'Giảm 10k khi đóng trước 3T, 6T, 12T'
             },
             'giga-f1': {
                 name: 'Giga F1',
